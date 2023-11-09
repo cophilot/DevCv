@@ -1,5 +1,5 @@
 <div class="background leftHeight">
-  <img src="assets/foto_square.jpg" alt="foto" class="foto" />
+  <img [src]="getImage()" alt="picture" class="foto" />
   <div class="container">
     <div class="bar wh"></div>
     <div [ngSwitch]="getLanguage()">

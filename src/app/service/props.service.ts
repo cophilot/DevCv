@@ -1,4 +1,13 @@
 import { Injectable } from '@angular/core';
+import {
+  getExampleContact,
+  getExampleEducation,
+  getExampleGeneral,
+  getExampleJobs,
+  getExampleOther,
+  getExampleSkills,
+  getExampleSpacing,
+} from 'src/utils/examples';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +27,8 @@ export class PropsService {
   private static other: any;
   private static spacing: any;
 
+  private static IMAGE = 'assets/foto_square.jpg';
+
   static init() {
     if (this.initial) {
       return;
@@ -36,52 +47,26 @@ export class PropsService {
   }
 
   static initFiles() {
-    fetch('assets/content/contact.json').then((response) => {
-      response.json().then((data) => {
-        this.addLanguage(data);
+    this.contact = getExampleContact();
+    this.addLanguage(this.contact);
 
-        this.contact = data;
-      });
-    });
-    fetch('assets/content/skills.json').then((response) => {
-      response.json().then((data) => {
-        this.addLanguage(data);
+    this.skills = getExampleSkills();
+    this.addLanguage(this.skills);
 
-        this.skills = data;
-      });
-    });
-    fetch('assets/content/jobs.json').then((response) => {
-      response.json().then((data) => {
-        this.addLanguage(data);
+    this.jobs = getExampleJobs();
+    this.addLanguage(this.jobs);
 
-        this.jobs = data;
-      });
-    });
-    fetch('assets/content/education.json').then((response) => {
-      response.json().then((data) => {
-        this.addLanguage(data);
+    this.education = getExampleEducation();
+    this.addLanguage(this.education);
 
-        this.education = data;
-      });
-    });
-    fetch('assets/content/other.json').then((response) => {
-      response.json().then((data) => {
-        this.addLanguage(data);
-        this.other = data;
-      });
-    });
-    fetch('assets/content/general.json').then((response) => {
-      response.json().then((data) => {
-        this.addLanguage(data);
+    this.other = getExampleOther();
+    this.addLanguage(this.other);
 
-        this.general = data;
-      });
-    });
-    fetch('assets/content/spacing.json').then((response) => {
-      response.json().then((data) => {
-        this.spacing = data;
-      });
-    });
+    this.general = getExampleGeneral();
+    this.addLanguage(this.general);
+
+    this.spacing = getExampleSpacing();
+    this.addLanguage(this.spacing);
   }
 
   static addLanguage(data: any) {
@@ -98,6 +83,36 @@ export class PropsService {
         this.LANGUAGES.push(lang);
       }
     }
+  }
+
+  static saveContent(name: string, content: string) {
+    switch (name.toLowerCase()) {
+      case 'contact':
+        this.contact = JSON.parse(content);
+        break;
+      case 'skills':
+        this.skills = JSON.parse(content);
+        break;
+      case 'jobs':
+        this.jobs = JSON.parse(content);
+        break;
+      case 'education':
+        this.education = JSON.parse(content);
+        break;
+      case 'other':
+        this.other = JSON.parse(content);
+        break;
+      case 'general':
+        this.general = JSON.parse(content);
+        break;
+      case 'spacing':
+        this.spacing = JSON.parse(content);
+        break;
+      default:
+        return;
+    }
+
+    this.addLanguage(this.contact);
   }
 
   static getContact(): any[] {
@@ -130,6 +145,9 @@ export class PropsService {
   }
   static getSpacingByName(name: string): number {
     this.init();
+    if (this.spacing == undefined) {
+      return 0;
+    }
     if (this.spacing.hasOwnProperty(name)) {
       return this.spacing[name];
     }
@@ -137,6 +155,9 @@ export class PropsService {
   }
 
   static getJSONPropsByLanguage(json: any): any {
+    if (json == undefined) {
+      return {};
+    }
     if (json.hasOwnProperty('all')) {
       return json.all;
     }
@@ -177,6 +198,27 @@ export class PropsService {
     localStorage.setItem('CVLanguage', this.LANG);
   }
 
+  static getJsonAsString(name: string) {
+    switch (name.toLowerCase()) {
+      case 'contact':
+        return JSON.stringify(this.contact);
+      case 'skills':
+        return JSON.stringify(this.skills);
+      case 'jobs':
+        return JSON.stringify(this.jobs);
+      case 'education':
+        return JSON.stringify(this.education);
+      case 'other':
+        return JSON.stringify(this.other);
+      case 'general':
+        return JSON.stringify(this.general);
+      case 'spacing':
+        return JSON.stringify(this.spacing);
+      default:
+        return '';
+    }
+  }
+
   static setLangIndex() {
     this.LANGINDEX = this.LANGUAGES.findIndex((lang) => lang === this.LANG);
   }
@@ -184,5 +226,15 @@ export class PropsService {
   static getLanguage(): string {
     this.init();
     return this.LANG;
+  }
+
+  static getImg(): string {
+    this.init();
+    return this.IMAGE;
+  }
+
+  static setImg(img: string): void {
+    this.init();
+    this.IMAGE = img;
   }
 }

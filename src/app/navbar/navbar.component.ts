@@ -10,6 +10,8 @@ export class NavbarComponent {
   isClosed = true;
   completeClose = false;
 
+  editContent = '';
+
   constructor() {}
 
   toggleLanguage(): void {
@@ -29,5 +31,39 @@ export class NavbarComponent {
   }
   setColorScheme(colorScheme: string): void {
     PropsService.setScheme(colorScheme);
+  }
+
+  uploadImagetest() {
+    document.getElementById('upload')?.click();
+    document.getElementById('upload')?.addEventListener('change', (event) => {
+      const file = (<HTMLInputElement>event.target)?.files?.[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          const result = reader.result?.toString();
+          if (result) {
+            this.editContent = result;
+          }
+        };
+      }
+    });
+  }
+
+  uploadImage() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (event: any) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const binary = reader.result as string;
+        PropsService.setImg(binary);
+        console.log(binary);
+      };
+    };
+    input.click();
   }
 }

@@ -36,6 +36,28 @@
       </a>
     </div>
   </div>
+  <div *ngIf="!isClosed && !completeClose">
+    <div style="right: 20px; top: 150px" class="vertical">
+      <button
+        class="contentBtn"
+        *ngFor="
+          let name of [
+            'General',
+            'Contact',
+            'Skills',
+            'Jobs',
+            'Education',
+            'Other',
+            'Spacing'
+          ]
+        "
+        (click)="editContent = name"
+      >
+        {{ name }}
+      </button>
+      <button class="contentBtn" (click)="uploadImage()">Upload Image</button>
+    </div>
+  </div>
   <div *ngIf="!completeClose">
     <div style="right: 50px; bottom: 50px">
       <a href="https://github.com/phil1436" class="textShadow" target="_blank">
@@ -115,3 +137,8 @@
     </div>
   </div>
 </div>
+<app-editor
+  [name]="editContent"
+  *ngIf="editContent != ''"
+  (closeEmitter)="editContent = ''"
+></app-editor>

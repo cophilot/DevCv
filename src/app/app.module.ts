@@ -16,6 +16,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { EducationComponent } from './education/education.component';
 import { OtherComponent } from './other/other.component';
 import { PageNumberComponent } from './page-number/page-number.component';
+import { EditorComponent } from './editor/editor.component';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,13 +35,11 @@ import { PageNumberComponent } from './page-number/page-number.component';
     NavbarComponent,
     EducationComponent,
     OtherComponent,
-    PageNumberComponent
+    PageNumberComponent,
+    EditorComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

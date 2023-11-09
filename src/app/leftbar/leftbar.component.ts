@@ -24,4 +24,8 @@ export class LeftbarComponent {
   getSpacingByName(name: string): number {
     return PropsService.getSpacingByName(name);
   }
+
+  getImage() {
+    return PropsService.getImg();
+  }
 }

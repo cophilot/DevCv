@@ -7,7 +7,10 @@
   color: white;
 }
 .foto {
-  width: 293px;
+  min-width: 293px;
+  max-width: 293px;
+  min-height: 293px;
+  max-height: 293px;
   margin-left: -10px;
 }
 .container {
