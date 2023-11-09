@@ -61,9 +61,12 @@ export class NavbarComponent {
       reader.onload = () => {
         const binary = reader.result as string;
         PropsService.setImg(binary);
-        console.log(binary);
       };
     };
     input.click();
+  }
+
+  deleteImage() {
+    PropsService.setImg('');
   }
 }

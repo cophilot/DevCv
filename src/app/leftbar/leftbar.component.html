@@ -1,8 +1,11 @@
 <div class="background leftHeight">
-  <img [src]="getImage()" alt="picture" class="foto" />
+  <img [src]="getImage()" alt="picture" class="foto" *ngIf="getImage() != ''" />
   <div class="container">
-    <div class="bar wh"></div>
-    <div [ngSwitch]="getLanguage()">
+    <div class="bar wh" *ngIf="getImage() != ''"></div>
+    <div
+      [ngSwitch]="getLanguage()"
+      [style.padding-top.px]="getImage() != '' ? 0 : 50"
+    >
       <h2 *ngSwitchCase="'DE'">Kontakt</h2>
       <h2 *ngSwitchCase="'RU'">Контакт</h2>
       <h2 *ngSwitchCase="'ES'">Contacto</h2>

@@ -27,7 +27,8 @@ export class PropsService {
   private static other: any;
   private static spacing: any;
 
-  private static IMAGE = 'assets/foto_square.jpg';
+  private static IMAGE =
+    Math.random() > 0.1 ? 'assets/foto_square.jpg' : 'assets/foto_square2.jpg';
 
   static init() {
     if (this.initial) {

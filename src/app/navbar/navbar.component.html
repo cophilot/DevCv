@@ -55,7 +55,12 @@
       >
         {{ name }}
       </button>
-      <button class="contentBtn" (click)="uploadImage()">Upload Image</button>
+    </div>
+    <div *ngIf="!isClosed && !completeClose">
+      <div style="left: 20px; top: 150px" class="vertical">
+        <button class="contentBtn" (click)="uploadImage()">Upload Image</button>
+        <button class="contentBtn" (click)="deleteImage()">Delete Image</button>
+      </div>
     </div>
   </div>
   <div *ngIf="!completeClose">
