@@ -1,0 +1,31 @@
+* {
+  color: white;
+}
+.icon {
+  width: 40px;
+  height: 40px;
+  //background-color: red;
+  margin-left: 5px;
+  filter: brightness(0) invert(1);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.skill {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  margin-right: 20px;
+  width: 60px;
+}
+.name {
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+  white-space: pre-line;
+}

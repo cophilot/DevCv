@@ -1,0 +1,103 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+ */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Ubuntu", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+p {
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.a4 {
+  background-color: white;
+  width: 850px;
+  margin: 0 auto;
+}
+
+.a4Height {
+  min-height: 3105px;
+}
+
+.leftHeight {
+  min-height: 3105px;
+}
+
+h2 {
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0);
+}
+.bar {
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-left: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0);
+}
+
+.wh {
+  background-color: white;
+}
+
+.gr {
+  background-color: var(--primary);
+}
+
+.noShadow {
+  box-shadow: none;
+}
+
+.pageSplitter {
+  display: flex;
+  flex-direction: row;
+}
+
+[data-theme="green-light"] {
+  --primary: #4caf51;
+}
+[data-theme="green-dark"] {
+  --primary: #008000;
+}
+[data-theme="blue-dark"] {
+  --primary: #2a009c;
+}
+[data-theme="blue-light"] {
+  --primary: #4169e1;
+}
+[data-theme="orange"] {
+  --primary: #daa520;
+}
+[data-theme="blue-green"] {
+  --primary: #008080;
+}
+[data-theme="grey-light"] {
+  --primary: #708090;
+}
+[data-theme="wine-red"] {
+  --primary: #800020;
+}
+[data-theme="red-dark"] {
+  --primary: #dc143c;
+}
+[data-theme="red-light"] {
+  --primary: #ff4500;
+}
+[data-theme="purple"] {
+  --primary: #9966cc;
+}
+[data-theme="yellow"] {
+  --primary: #22f4ae;
+  /* --primary: #808000; */
+}

@@ -1,0 +1,43 @@
+<div class="background leftHeight">
+  <img src="assets/foto_square.jpg" alt="foto" class="foto" />
+  <div class="container">
+    <div class="bar wh"></div>
+    <div [ngSwitch]="getLanguage()">
+      <h2 *ngSwitchCase="'DE'">Kontakt</h2>
+      <h2 *ngSwitchCase="'RU'">Контакт</h2>
+      <h2 *ngSwitchCase="'ES'">Contacto</h2>
+      <h2 *ngSwitchCase="'FR'">Contact</h2>
+      <h2 *ngSwitchDefault>Contact</h2>
+    </div>
+    <app-contact></app-contact>
+    <div [style.height]="getSpacingByName('contact') + 'px'"></div>
+    <div class="bar wh"></div>
+    <div [ngSwitch]="getLanguage()">
+      <h2 *ngSwitchCase="'DE'">Fähigkeiten</h2>
+      <h2 *ngSwitchCase="'RU'">Навыки</h2>
+      <h2 *ngSwitchCase="'ES'">Habilidades</h2>
+      <h2 *ngSwitchCase="'FR'">Compétences</h2>
+      <h2 *ngSwitchDefault>Skills</h2>
+    </div>
+    <app-skills></app-skills>
+    <div [style.height]="getSpacingByName('skills') + 'px'"></div>
+    <div class="bar wh"></div>
+    <div style="padding-bottom: 100px">
+      <div [ngSwitch]="getLanguage()">
+        <h2 *ngSwitchCase="'DE'">Sprachen</h2>
+        <h2 *ngSwitchCase="'RU'">Языки</h2>
+        <h2 *ngSwitchCase="'ES'">Idiomas</h2>
+        <h2 *ngSwitchCase="'FR'">Langues</h2>
+        <h2 *ngSwitchDefault>Languages</h2>
+      </div>
+      <p
+        style="margin-top: 20px"
+        *ngFor="let lang of getGeneralInfo().languages"
+      >
+        <b>{{ lang.split("-")[0] }}</b
+        >{{ lang.split("-")[1] == undefined ? "" : "-" + lang.split("-")[1] }}
+      </p>
+    </div>
+    <div [style.height]="getSpacingByName('languages') + 'px'"></div>
+  </div>
+</div>

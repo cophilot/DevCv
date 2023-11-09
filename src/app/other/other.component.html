@@ -1,0 +1,15 @@
+<div class="other">
+  <div class="part" *ngFor="let part of getOtherInfo()">
+    <div class="bar gr noShadow"></div>
+    <h2>{{ part.title }}</h2>
+    <div *ngIf="part.description != ''" class="desc">
+      <p>{{ part.description }}</p>
+    </div>
+    <div *ngIf="part.list.length != 0" class="descList">
+      <ul>
+        <li *ngFor="let item of part.list">{{ item }}</li>
+      </ul>
+    </div>
+    <div [style.height]="getSpacingByName(part.id) + 'px'"></div>
+  </div>
+</div>

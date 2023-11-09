@@ -1,0 +1,67 @@
+<!-- <div class="bigbar"></div> -->
+<div class="rightBar">
+  <p class="name">
+    {{ getGeneralInfo().firstname }}
+    <span style="color: var(--primary)">{{ getGeneralInfo().lastname }}</span>
+  </p>
+  <div [ngSwitch]="getLanguage()" style="margin-top: 40px">
+    <p *ngSwitchCase="'DE'">
+      <b>
+        Geburtsdatum: {{ getGeneralInfo().dob }}
+        <br />
+        Geburtsort: {{ getGeneralInfo().pob }}
+      </b>
+    </p>
+    <p *ngSwitchCase="'RU'">
+      <b>
+        Дата рождения: {{ getGeneralInfo().dob }}
+        <br />
+        Место рождения: {{ getGeneralInfo().pob }}
+      </b>
+    </p>
+    <p *ngSwitchCase="'FR'">
+      <b>
+        Date de naissance: {{ getGeneralInfo().dob }}
+        <br />
+        Lieu de naissance: {{ getGeneralInfo().pob }}
+      </b>
+    </p>
+    <p *ngSwitchCase="'ES'">
+      <b>
+        Fecha de nacimiento: {{ getGeneralInfo().dob }}
+        <br />
+        Lugar de nacimiento: {{ getGeneralInfo().pob }}
+      </b>
+    </p>
+    <p *ngSwitchDefault>
+      <b>
+        Date of birth: {{ getGeneralInfo().dob }}
+        <br />
+        Place of birth: {{ getGeneralInfo().pob }}
+      </b>
+    </p>
+  </div>
+
+  <div class="bar gr noShadow"></div>
+  <div [ngSwitch]="getLanguage()">
+    <h2 *ngSwitchCase="'DE'">Berufserfahrung</h2>
+    <h2 *ngSwitchCase="'RU'">Опыт работы</h2>
+    <h2 *ngSwitchCase="'ES'">Experiencia laboral</h2>
+    <h2 *ngSwitchCase="'FR'">L'expérience professionnelle</h2>
+    <h2 *ngSwitchDefault>Work experience</h2>
+  </div>
+  <app-jobs></app-jobs>
+  <div [style.height]="getSpacingByName('work') + 'px'"></div>
+
+  <div class="bar gr noShadow"></div>
+  <div [ngSwitch]="getLanguage()">
+    <h2 *ngSwitchCase="'DE'">Bildungsweg</h2>
+    <h2 *ngSwitchCase="'RU'">Образование</h2>
+    <h2 *ngSwitchCase="'ES'">Educación</h2>
+    <h2 *ngSwitchCase="'FR'">Éducation</h2>
+    <h2 *ngSwitchDefault>Education</h2>
+  </div>
+  <app-education></app-education>
+  <div [style.height]="getSpacingByName('education') + 'px'"></div>
+  <app-other style="margin-bottom: 100px"></app-other>
+</div>

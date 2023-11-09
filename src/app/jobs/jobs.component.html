@@ -1,0 +1,25 @@
+<div class="jobs">
+  <div *ngFor="let job of getJobsInfo()">
+    <div class="job">
+      <div class="jobHeader">
+        <p class="jobTitle">{{ job.job.toUpperCase() }}</p>
+        <p class="jobDate">
+          <i>{{ job.date }}</i>
+        </p>
+      </div>
+      <div class="compInfo">
+        <p>
+          <a [href]="job.url" target="_blank" *ngIf="job.url != ''">{{
+            job.company
+          }}</a
+          >{{ (job.url == "" ? job.company : "") + " - " + job.location }}
+        </p>
+      </div>
+      <div class="description">
+        <ul>
+          <li *ngFor="let d of job.description">{{ d }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

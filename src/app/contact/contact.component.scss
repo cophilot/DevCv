@@ -1,0 +1,23 @@
+* {
+  color: white;
+}
+.contacts {
+  display: flex;
+  flex-direction: column;
+
+  .contactRow {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 10px;
+    i {
+      width: 25px;
+      height: 25px;
+      margin-right: 10px;
+      margin-top: 5px;
+      -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0));
+      filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0));
+    }
+  }
+}

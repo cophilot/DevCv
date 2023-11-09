@@ -1,0 +1,72 @@
+{
+  "en": [
+    {
+      "id": "certification",
+      "title": "Certifications",
+      "description": "",
+      "list": ["Azure Fundamentals", "AWS Cloud Practitioner"]
+    },
+    {
+      "id": "hobbies",
+      "title": "Hobbies",
+      "description": "",
+      "list": ["Going to the gym", "Coding", "Petting cats"]
+    }
+  ],
+  "de": [
+    {
+      "id": "certification",
+      "title": "Zertifizierungen",
+      "description": "",
+      "list": ["Azure Fundamentals", "AWS Cloud Practitioner"]
+    },
+    {
+      "id": "hobbies",
+      "title": "Hobbys",
+      "description": "",
+      "list": ["Ins Fitnessstudio gehen", "Programmieren", "Katzen streicheln"]
+    }
+  ],
+  "ru": [
+    {
+      "id": "certification",
+      "title": "Сертификаты",
+      "description": "",
+      "list": ["Azure Fundamentals", "AWS Cloud Practitioner"]
+    },
+    {
+      "id": "hobbies",
+      "title": "Увлечения",
+      "description": "",
+      "list": ["Ходить в спортзал", "программа", "Гладящие кошки"]
+    }
+  ],
+  "es": [
+    {
+      "id": "certification",
+      "title": "Certificaciones",
+      "description": "",
+      "list": ["Azure Fundamentals", "AWS Cloud Practitioner"]
+    },
+    {
+      "id": "hobbies",
+      "title": "Aficiones",
+      "description": "",
+      "list": ["Ir al gimnasio", "Programa", "Acariciar gatos"]
+    }
+  ],
+  "fr": [
+    {
+      "id": "certification",
+      "title": "Certifications",
+      "description": "",
+      "list": ["Azure Fundamentals", "AWS Cloud Practitioner"]
+    },
+    {
+      "id": "hobbies",
+      "title": "Loisirs",
+      "description": "",
+      "list": ["Aller à la gym", "Programmation", "Caresser les chats"]
+    }
+  ]
+}

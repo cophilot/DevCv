@@ -1,0 +1,20 @@
+<div class="jobs">
+  <div *ngFor="let edu of getEductaionInfo()">
+    <div class="job">
+      <div class="jobHeader">
+        <p class="jobTitle">{{ edu.name.toUpperCase() }}</p>
+        <p class="jobDate">
+          <i>{{ edu.year }}</i>
+        </p>
+      </div>
+      <div class="compInfo">
+        <p>
+          {{ edu.school + " - " + edu.location }}
+        </p>
+      </div>
+      <div class="description">
+        <p>{{ edu.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

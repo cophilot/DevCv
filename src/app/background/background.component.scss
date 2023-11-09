@@ -1,0 +1,16 @@
+.bg {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  height: 100%;
+  z-index: -100;
+
+  width: 900px;
+  .primSec {
+    background-color: var(--primary);
+    height: 100%;
+    width: 308px;
+  }
+}

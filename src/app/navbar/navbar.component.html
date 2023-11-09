@@ -1,0 +1,117 @@
+<div class="navbar">
+  <div *ngIf="!completeClose">
+    <div style="left: 50px; top: 20px">
+      <img
+        class="imgShadow logo"
+        src="assets/logo.png"
+        alt="Options"
+        style="width: 150px; height: 150px; cursor: pointer"
+        (click)="isClosed = false"
+      />
+    </div>
+  </div>
+  <div *ngIf="isClosed && !completeClose">
+    <div style="right: 70px; top: 70px">
+      <img
+        class="imgShadow settings"
+        src="assets/settings.png"
+        alt="Options"
+        style="width: 50px; height: 50px; cursor: pointer"
+        (click)="isClosed = false"
+      />
+      <a
+        class="textShadow qm"
+        href="https://github.com/phil1436"
+        target="_blank"
+        style="
+          font-size: 50px;
+          margin-top: 20px;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          cursor: pointer;
+        "
+      >
+        ?
+      </a>
+    </div>
+  </div>
+  <div *ngIf="!completeClose">
+    <div style="right: 50px; bottom: 50px">
+      <a href="https://github.com/phil1436" class="textShadow" target="_blank">
+        by Philipp B.
+      </a>
+    </div>
+  </div>
+  <div *ngIf="!isClosed && !completeClose">
+    <div style="right: 20px; top: 20px">
+      <button class="languageBtn" (click)="toggleLanguage()">
+        {{ getLanguage() }}
+      </button>
+      <button class="printBtn" (click)="print()">PRINT</button>
+      <button class="languageBtn" (click)="isClosed = true">X</button>
+    </div>
+    <div class="horizontal" style="left: 20px; bottom: 20px">
+      <button
+        class="colorBtn"
+        style="background-color: #4caf51"
+        (click)="setColorScheme('green-light')"
+      ></button>
+      <button
+        class="colorBtn"
+        style="background-color: #008000"
+        (click)="setColorScheme('green-dark')"
+      ></button>
+      <button
+        class="colorBtn"
+        style="background-color: #2a009c"
+        (click)="setColorScheme('blue-dark')"
+      ></button>
+      <button
+        class="colorBtn"
+        style="background-color: #4169e1"
+        (click)="setColorScheme('blue-light')"
+      ></button>
+      <button
+        class="colorBtn"
+        style="background-color: #daa520"
+        (click)="setColorScheme('orange')"
+      ></button>
+      <button
+        class="colorBtn"
+        style="background-color: #008080"
+        (click)="setColorScheme('blue-green')"
+      ></button>
+      <button
+        class="colorBtn"
+        style="background-color: #708090"
+        (click)="setColorScheme('grey-light')"
+      ></button>
+      <button
+        class="colorBtn"
+        style="background-color: #800020"
+        (click)="setColorScheme('wine-red')"
+      ></button>
+      <button
+        class="colorBtn"
+        style="background-color: #dc143c"
+        (click)="setColorScheme('red-dark')"
+      ></button>
+      <button
+        class="colorBtn"
+        style="background-color: #ff4500"
+        (click)="setColorScheme('red-light')"
+      ></button>
+      <button
+        class="colorBtn"
+        style="background-color: #9966cc"
+        (click)="setColorScheme('purple')"
+      ></button>
+      <button
+        class="colorBtn"
+        style="background-color: #808000"
+        (click)="setColorScheme('yellow')"
+      ></button>
+    </div>
+  </div>
+</div>

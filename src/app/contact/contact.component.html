@@ -1,0 +1,21 @@
+<div class="contacts">
+  <div *ngFor="let con of getContactInfo()">
+    <div class="contactRow">
+      <!-- <img [src]="con.icon" /> -->
+      <i [class]="con.icon"></i>
+      <a
+        *ngIf="con.link != ''"
+        [href]="con.link"
+        target="_blank"
+        style="white-space: pre-line"
+        >{{ con.text }}</a
+      >
+      <!-- <p *ngIf="con.link == ''">{{ con.text }}</p> -->
+      <span
+        *ngIf="con.link == ''"
+        style="white-space: pre-line; font-size: 14px"
+        >{{ con.text }}</span
+      >
+    </div>
+  </div>
+</div>
