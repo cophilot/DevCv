@@ -16,6 +16,11 @@
     color: white;
     margin-bottom: 10px;
   }
+  .error {
+    color: red;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
   .ta {
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -28,6 +33,14 @@
     resize: none;
     color: black;
     font-family: "Roboto", sans-serif;
+
+    background: url(http://i.imgur.com/2cOaJ.png);
+    background-color: white;
+    background-attachment: local;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    padding-top: 10px;
+    border-color: #ccc;
   }
   .textareaElement {
     width: 300px;

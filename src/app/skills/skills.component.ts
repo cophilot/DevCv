@@ -10,7 +10,7 @@ export class SkillsComponent {
   iconBasePath = 'assets/icons/logos/';
 
   getSkillsInfo(): any[][] {
-    let skills = PropsService.getSkills().slice();
+    let skills = PropsService.getSkills();
     // make a copy of the skills array
     const myClonedArray: any[] = [];
     skills.forEach((val) => myClonedArray.push(Object.assign({}, val)));

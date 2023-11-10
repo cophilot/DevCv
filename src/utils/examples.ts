@@ -1,3 +1,24 @@
+export function getExampleByName(name: string): any {
+  switch (name.toLowerCase()) {
+    case 'contact':
+      return getExampleContact();
+    case 'skills':
+      return getExampleSkills();
+    case 'jobs':
+      return getExampleJobs();
+    case 'education':
+      return getExampleEducation();
+    case 'other':
+      return getExampleOther();
+    case 'general':
+      return getExampleGeneral();
+    case 'spacing':
+      return getExampleSpacing();
+    default:
+      return {};
+  }
+}
+
 export function getExampleContact(): any {
   return {
     all: [

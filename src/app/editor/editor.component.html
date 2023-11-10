@@ -2,6 +2,7 @@
 
 <div class="editor">
   <h1>{{ name }}</h1>
+  <p class="error">{{ errorMessage }}</p>
   <textarea class="ta" [(ngModel)]="text"> </textarea>
   <div class="btns">
     <button class="cancel" (click)="close()">Cancel</button>

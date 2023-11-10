@@ -1,13 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
-  getExampleContact,
-  getExampleEducation,
-  getExampleGeneral,
-  getExampleJobs,
-  getExampleOther,
-  getExampleSkills,
-  getExampleSpacing,
-} from 'src/utils/examples';
+import { getExampleByName } from 'src/utils/examples';
+import { CookieMessageComponent } from '../cookie-message/cookie-message.component';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +11,7 @@ export class PropsService {
   private static LANGINDEX = 1;
   private static LANGUAGES = ['EN'];
   private static initial = false;
+  private static cookiesAllowed = false;
 
   private static contact: any;
   private static general: any;
@@ -35,39 +29,52 @@ export class PropsService {
       return;
     }
     this.initFiles();
-    let x = localStorage.getItem('CVcolorScheme');
+    let x = this.getLS('cookiesAllowed');
+    if (x != null) {
+      this.cookiesAllowed = x === 'true';
+    }
+
+    if (this.cookiesAllowed == false) {
+      CookieMessageComponent.show();
+    }
+
+    x = this.getLS('CVcolorScheme');
     if (x != null) {
       this.SCHEME = x;
     }
     document.documentElement.setAttribute('data-theme', this.SCHEME);
-    x = localStorage.getItem('CVLanguage');
+    x = this.getLS('CVLanguage');
     if (x != null) {
       this.LANG = x;
     }
+    x = this.getLS('CVImage');
+    if (x != null) {
+      this.IMAGE = x;
+    }
+
     this.initial = true;
   }
 
   static initFiles() {
-    this.contact = getExampleContact();
+    this.contact = this.fetchContent('contact');
     this.addLanguage(this.contact);
 
-    this.skills = getExampleSkills();
+    this.skills = this.fetchContent('skills');
     this.addLanguage(this.skills);
 
-    this.jobs = getExampleJobs();
+    this.jobs = this.fetchContent('jobs');
     this.addLanguage(this.jobs);
 
-    this.education = getExampleEducation();
+    this.education = this.fetchContent('education');
     this.addLanguage(this.education);
 
-    this.other = getExampleOther();
+    this.other = this.fetchContent('other');
     this.addLanguage(this.other);
 
-    this.general = getExampleGeneral();
+    this.general = this.fetchContent('general');
     this.addLanguage(this.general);
 
-    this.spacing = getExampleSpacing();
-    this.addLanguage(this.spacing);
+    this.spacing = this.fetchContent('spacing');
   }
 
   static addLanguage(data: any) {
@@ -86,25 +93,40 @@ export class PropsService {
     }
   }
 
+  static fetchContent(name: string): any {
+    let data = this.getLS(name.toLowerCase());
+    if (data == null) {
+      data = getExampleByName(name);
+      return data;
+    }
+    return JSON.parse(data);
+  }
+
   static saveContent(name: string, content: string) {
     switch (name.toLowerCase()) {
       case 'contact':
         this.contact = JSON.parse(content);
+        this.addLanguage(this.contact);
         break;
       case 'skills':
         this.skills = JSON.parse(content);
+        this.addLanguage(this.skills);
         break;
       case 'jobs':
         this.jobs = JSON.parse(content);
+        this.addLanguage(this.jobs);
         break;
       case 'education':
         this.education = JSON.parse(content);
+        this.addLanguage(this.education);
         break;
       case 'other':
         this.other = JSON.parse(content);
+        this.addLanguage(this.other);
         break;
       case 'general':
         this.general = JSON.parse(content);
+        this.addLanguage(this.general);
         break;
       case 'spacing':
         this.spacing = JSON.parse(content);
@@ -113,7 +135,7 @@ export class PropsService {
         return;
     }
 
-    this.addLanguage(this.contact);
+    this.setLS(name.toLowerCase(), content);
   }
 
   static getContact(): any[] {
@@ -169,7 +191,7 @@ export class PropsService {
       return json[this.LANG.toLowerCase()];
     }
     if (!json.hasOwnProperty('en')) {
-      alert('Language not found: ' + this.LANG);
+      alert('Language not found: ' + this.LANG + ' in ' + JSON.stringify(json));
       return {};
     }
     return json.en;
@@ -183,7 +205,7 @@ export class PropsService {
   static setScheme(scheme: string): void {
     this.init();
     this.SCHEME = scheme;
-    localStorage.setItem('CVcolorScheme', scheme);
+    this.setLS('CVcolorScheme', scheme);
     document.documentElement.setAttribute('data-theme', scheme);
   }
 
@@ -196,7 +218,7 @@ export class PropsService {
     }
     this.LANG = this.LANGUAGES[this.LANGINDEX];
 
-    localStorage.setItem('CVLanguage', this.LANG);
+    this.setLS('CVLanguage', this.LANG);
   }
 
   static getJsonAsString(name: string) {
@@ -236,6 +258,40 @@ export class PropsService {
 
   static setImg(img: string): void {
     this.init();
+    // split the string into smaller parts
+    /* let c = 0;
+    while (true) {
+      let s = img.slice(c * 100, c * 100 + 99);
+      if (s.length == 0) {
+        break;
+      }
+      this.setLS('CVImage' + c, s);
+
+      c++;
+    } */
     this.IMAGE = img;
+  }
+
+  static getLS(name: string): string | null {
+    return localStorage.getItem(name);
+  }
+
+  static setLS(name: string, value: string) {
+    if (this.cookiesAllowed == false) {
+      return;
+    }
+    localStorage.setItem(name, value);
+  }
+
+  static rejectCookies() {
+    localStorage.clear();
+    this.cookiesAllowed = false;
+  }
+
+  static acceptCookies() {
+    this.cookiesAllowed = true;
+    this.setLS('cookiesAllowed', 'true');
+    this.initial = false;
+    this.init();
   }
 }

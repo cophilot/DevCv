@@ -14,7 +14,9 @@ import { PropsService } from '../service/props.service';
 })
 export class EditorComponent {
   @Input() name: string = 'Error';
-  @Input() text: string = 'Error';
+  text: string = '';
+
+  errorMessage = '';
 
   @Output() closeEmitter = new EventEmitter();
 
@@ -25,12 +27,20 @@ export class EditorComponent {
   }
 
   save() {
+    // check if text is valid json
+    try {
+      JSON.parse(this.text);
+    } catch (e: any) {
+      this.errorMessage = e.message;
+      return;
+    }
     PropsService.saveContent(this.name, this.text);
     this.close();
   }
 
   @HostListener('document:keydown.escape', ['$event'])
   close(): void {
+    this.errorMessage = '';
     this.closeEmitter.emit();
   }
 }

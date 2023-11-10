@@ -1,0 +1,10 @@
+<div class="message vertical" *ngIf="isVsible()">
+  <h1>
+    This website uses cookies to ensure you get the best experience on our
+    website.
+  </h1>
+  <div class="horizontal btns">
+    <button class="btn btn-primary" (click)="rejectCookies()">Reject</button>
+    <button class="btn btn-primary" (click)="acceptCookies()">Accept</button>
+  </div>
+</div>

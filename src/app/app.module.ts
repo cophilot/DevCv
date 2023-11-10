@@ -19,6 +19,7 @@ import { PageNumberComponent } from './page-number/page-number.component';
 import { EditorComponent } from './editor/editor.component';
 
 import { FormsModule } from '@angular/forms';
+import { CookieMessageComponent } from './cookie-message/cookie-message.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     OtherComponent,
     PageNumberComponent,
     EditorComponent,
+    CookieMessageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
