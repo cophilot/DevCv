@@ -74,7 +74,7 @@ To add an image to the skills section add the image to the [src/assets/icons/log
 7. Set the scale to _"140%"_ or play around with the scale to get the best result
 8. Uncheck _"Headers and footers"_
 9. Check _"Background graphics"_
-10. Click on _"Print"_ test
+10. Click on _"Print"_
 
 ---
 
