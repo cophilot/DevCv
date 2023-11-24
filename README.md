@@ -9,9 +9,6 @@
 
 <!-- Badges -->
 <div align="center">
-   <a href="https://github.com/phil1436/DevCv/releases">
-       <img src="https://img.shields.io/github/v/release/phil1436/DevCv?display_name=tag" alt="current realease" />
-   </a>
    <a href="https://github.com/phil1436/DevCv/blob/master/LICENSE">
        <img src="https://img.shields.io/github/license/phil1436/DevCv" alt="license" />
    </a>
@@ -78,4 +75,8 @@ To add an image to the skills section add the image to the [src/assets/icons/log
 
 ---
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.2.
+_This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.2._
+
+---
+
+By [Philipp B.](https://github.com/phil1436)
