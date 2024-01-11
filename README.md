@@ -9,14 +9,14 @@
 
 <!-- Badges -->
 <div align="center">
-   <a href="https://github.com/phil1436/DevCv/blob/master/LICENSE">
-       <img src="https://img.shields.io/github/license/phil1436/DevCv" alt="license" />
+   <a href="https://github.com/cophilot/DevCv/blob/master/LICENSE">
+       <img src="https://img.shields.io/github/license/cophilot/DevCv" alt="license" />
    </a>
-   <a href="https://github.com/phil1436/DevCv/stargazers">
-       <img src="https://img.shields.io/github/stars/phil1436/DevCv" alt="stars" />
+   <a href="https://github.com/cophilot/DevCv/stargazers">
+       <img src="https://img.shields.io/github/stars/cophilot/DevCv" alt="stars" />
    </a>
-   <a href="https://github.com/phil1436/DevCv/commits/master">
-       <img src="https://img.shields.io/github/last-commit/phil1436/DevCv" alt="last commit" />
+   <a href="https://github.com/cophilot/DevCv/commits/master">
+       <img src="https://img.shields.io/github/last-commit/cophilot/DevCv" alt="last commit" />
    </a>
 </div>
 
@@ -79,4 +79,4 @@ _This project was generated with [Angular CLI](https://github.com/angular/angula
 
 ---
 
-By [Philipp B.](https://github.com/phil1436)
+By [Philipp B.](https://github.com/cophilot)
