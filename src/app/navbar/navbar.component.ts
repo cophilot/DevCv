@@ -69,4 +69,12 @@ export class NavbarComponent {
   deleteImage() {
     PropsService.setImg('');
   }
+
+  export() {
+    PropsService.export();
+  }
+
+  import() {
+    PropsService.import();
+  }
 }

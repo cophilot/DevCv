@@ -21,7 +21,7 @@
       />
       <a
         class="textShadow qm"
-        href="https://github.com/cophilot/DevCv"
+        href="https://github.com/cophilot/DevCv#devcv"
         target="_blank"
         style="
           font-size: 50px;
@@ -38,6 +38,7 @@
   </div>
   <div *ngIf="!isClosed && !completeClose">
     <div style="right: 20px; top: 150px" class="vertical">
+      <p class="navheading">Headings</p>
       <button
         class="contentBtn"
         *ngFor="
@@ -47,19 +48,31 @@
             'Skills',
             'Jobs',
             'Education',
-            'Other',
-            'Spacing'
+            'Other'
           ]
         "
         (click)="editContent = name"
       >
         {{ name }}
       </button>
+      <p class="navheading" style="margin-top: 50px">Spacing</p>
+
+      <button class="contentBtn" (click)="editContent = 'Spacing'">
+        Spacing
+      </button>
     </div>
     <div *ngIf="!isClosed && !completeClose">
       <div style="left: 20px; top: 150px" class="vertical">
+        <p class="navheading">Image</p>
+
         <button class="contentBtn" (click)="uploadImage()">Upload Image</button>
         <button class="contentBtn" (click)="deleteImage()">Delete Image</button>
+      </div>
+      <div style="left: 20px; top: 350px" class="vertical">
+        <p class="navheading">Import & Export</p>
+
+        <button class="contentBtn" (click)="import()">Import</button>
+        <button class="contentBtn" (click)="export()">Export</button>
       </div>
     </div>
   </div>
@@ -78,6 +91,7 @@
       <button class="printBtn" (click)="print()">PRINT</button>
       <button class="languageBtn" (click)="isClosed = true">X</button>
     </div>
+
     <div class="horizontal" style="left: 20px; bottom: 20px">
       <button
         class="colorBtn"
@@ -136,9 +150,12 @@
       ></button>
       <button
         class="colorBtn"
-        style="background-color: #808000"
+        style="background-color: #22f4ae"
         (click)="setColorScheme('yellow')"
       ></button>
+      <p class="dataInfo">
+        <i> All data is stored only in your browser. </i>
+      </p>
     </div>
   </div>
 </div>

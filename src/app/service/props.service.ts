@@ -83,7 +83,7 @@ export class PropsService {
       // check if key is already in the array
       let lang = key.toUpperCase();
 
-      if (lang === 'ALL' || lang === 'MULTI') {
+      if (lang === 'ALL' || lang === 'UNIVERSAL') {
         continue;
       }
       if (!this.LANGUAGES.includes(lang)) {
@@ -184,8 +184,8 @@ export class PropsService {
     if (json.hasOwnProperty('all')) {
       return json.all;
     }
-    if (json.hasOwnProperty('multi')) {
-      return json.multi;
+    if (json.hasOwnProperty('universal')) {
+      return json.universal;
     }
     if (json.hasOwnProperty(this.LANG.toLowerCase())) {
       return json[this.LANG.toLowerCase()];
@@ -258,18 +258,8 @@ export class PropsService {
 
   static setImg(img: string): void {
     this.init();
-    // split the string into smaller parts
-    /* let c = 0;
-    while (true) {
-      let s = img.slice(c * 100, c * 100 + 99);
-      if (s.length == 0) {
-        break;
-      }
-      this.setLS('CVImage' + c, s);
-
-      c++;
-    } */
     this.IMAGE = img;
+    this.setLS('CVImage', img);
   }
 
   static getLS(name: string): string | null {
@@ -293,5 +283,68 @@ export class PropsService {
     this.setLS('cookiesAllowed', 'true');
     this.initial = false;
     this.init();
+  }
+
+  static export() {
+    let data = {
+      contact: this.contact,
+      skills: this.skills,
+      jobs: this.jobs,
+      education: this.education,
+      other: this.other,
+      general: this.general,
+      spacing: this.spacing,
+      colorScheme: this.SCHEME,
+      language: this.LANG,
+      image: this.IMAGE,
+    };
+    // save as json file
+
+    const general = this.getGeneral();
+    console.log(general);
+
+    const name = general.firstname + '_' + general.lastname;
+
+    let a = document.createElement('a');
+    let file = new Blob([JSON.stringify(data)], { type: 'application/json' });
+    a.href = URL.createObjectURL(file);
+    a.download = name + '-CV-' + this.LANG + '.json';
+    a.click();
+  }
+
+  static import() {
+    let input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json';
+    input.onchange = (event: any) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = () => {
+        const binary = reader.result as string;
+        const data = JSON.parse(binary);
+        this.contact = data.contact;
+        this.skills = data.skills;
+        this.jobs = data.jobs;
+        this.education = data.education;
+        this.other = data.other;
+        this.general = data.general;
+        this.spacing = data.spacing;
+        this.SCHEME = data.colorScheme;
+        this.LANG = data.language;
+        this.IMAGE = data.image;
+        this.setLS('CVcolorScheme', this.SCHEME);
+        this.setLS('CVLanguage', this.LANG);
+        this.setLS('CVImage', this.IMAGE);
+        this.setLS('contact', JSON.stringify(this.contact));
+        this.setLS('skills', JSON.stringify(this.skills));
+        this.setLS('jobs', JSON.stringify(this.jobs));
+        this.setLS('education', JSON.stringify(this.education));
+        this.setLS('other', JSON.stringify(this.other));
+        this.setLS('general', JSON.stringify(this.general));
+        this.setLS('spacing', JSON.stringify(this.spacing));
+      };
+    };
+    input.click();
   }
 }

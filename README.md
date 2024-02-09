@@ -3,7 +3,7 @@
   <img src="src/assets/logo.png" alt="DevCvLogo" width="40%"/>
   <h1>DevCv</h1>
   <p>
-     Description
+     A simple CV builder for developers.
   </p>
 </div>
 
@@ -22,45 +22,273 @@
 
 ---
 
-- [Installation](#installation)
-- [Add your own data](#add-your-own-data)
-  - [Contact](#contact)
-  - [Skills](#skills)
-- [Export](#export)
+---
+
+## Privacy
+
+This project does not collect any personal data. The data you enter is only stored in your browser, after you accepted this, and is **not** sent to any server. If you want to be sure, you can check the source code of this project.
 
 ---
 
-## Installation
+## Settings
 
-1. Clone the repository
-2. Run `npm install` to install dependencies
-3. Run `npm start` to start the development server
-4. Navigate to `http://localhost:4200/`
+You can open the settings by clicking on the settings icon in the top right corner. Here you can edit the data for your CV.
 
 ---
 
 ## Add your own data
 
-You can edit the data in the [src/assets/content](src/assets/content) folder.
+You can edit the data of the CV in the settings menu. On the right side, you see the [headings](#headings) of the CV. Click on a heading to edit the data for the specific heading and the CV will be updated. The data is stored in the local storage of your browser, when you accept this.
 
-Follow the structure of the JSON files and add your own data.
-
-Each file has a JSON object with either a `all` or `de` and `en` property. Choose the `all` property if you want to use the same data for both languages. Otherwise use the `de` and `en` properties to add different data for each language.
-
-### Contact
-
-- Add an icon from [Bootstrap Icon](https://icons.getbootstrap.com/) for each contact entry.
-- Leave the link empty then no link will be added to the icon.
-
-### Skills
-
-To add an image to the skills section add the image to the [src/assets/icons/logos](src/assets/icons/logos) folder and name it like a skill in lowercase followed by `.png` (e.g. `angular.png` for the skill _Angular_).
+> To see how the data is structured, you can get more information in the [languages](#languages) and [headings](#headings) section.
 
 ---
 
-## Export
+## Languages
 
-> Export via **Microsoft Edge** for the best quality!
+Each topic (heading) of the CV is structured as JSON object. The structure of the JSON object is the same for each topic. A topic can stored in multiple languages or in one universal language.
+
+> You can change the language in the settings menu in the top right corner.
+
+### Multiple languages
+
+To provide a topic in multiple languages, you can add a JSON object with the language code as a key of the root JSON object. The value of the key is the data for the specific language.
+
+Example:
+
+```json
+{
+  "en": {
+    "firstname": "John",
+    "lastname": "Smith",
+    "dob": "1. January 2000",
+    "pob": "New York, USA",
+    "languages": [
+      "English - Native",
+      "German - Fluent",
+      "French - Basic"
+    ]
+  },
+  "de": {
+    "firstname": "John",
+    "lastname": "Smith",
+    "dob": "1. Januar 2000",
+    "pob": "New York, Vereinigte Staaten",
+    "languages": [
+      "Englisch - Muttersprache",
+      "Deutsch - Fließend",
+      "Französisch - Grundkenntnisse"
+    ]
+  },
+  ...
+}
+```
+
+Currently the following languages are supported:
+
+- English - `en`
+- German - `de`
+- Russian - `ru`
+- Spanish - `es`
+- French - `fr`
+
+If an topic does not have a translation for the selected language english will be used as a fallback.
+
+**The english language should always be provided!**
+
+### Universal language
+
+If you want to provide the same data for all languages, you can add the data with a key called `all` or `universal`.
+
+Example:
+
+```json
+{
+  "all": [
+    {
+      "text": "test@smith.example",
+      "icon": "bi bi-envelope",
+      "link": "mailto:john@smith.example"
+    },
+    {
+      "text": "+1 234 56789",
+      "icon": "bi bi-telephone",
+      "link": ""
+    },
+    ...
+}
+```
+
+---
+
+## Headings
+
+Each heading of the CV is structured as JSON object. The structure for each heading is described below.
+
+### General
+
+_The general section is used for the personal information of the CV._
+
+- `firstname` - The first name of the person.
+- `lastname` - The last name of the person.
+- `dob` - The date of birth of the person.
+- `pob` - The place of birth of the person.
+- `languages` - An array of languages the person speaks.
+
+Example:
+
+```json
+{
+  "en": {
+    "firstname": "John",
+    "lastname": "Smith",
+    "dob": "1. January 2000",
+    "pob": "New York, USA",
+    "languages": [
+      "English - Native",
+      "German - Fluent",
+      "French - Basic"
+    ]
+  },
+  ...
+}
+```
+
+> Note: The `languages` array will be displayed on the left side of the CV.
+
+### Contact
+
+_The contact section is used for the contact information of the CV, that will be displayed on the left side of the CV._
+
+The contact section is structured as an array of JSON objects. Each JSON object represents a contact entry.
+
+- `text` - The text of the contact entry.
+- `icon` - The icon of the contact entry using [Bootstrap Icon](https://icons.getbootstrap.com/).
+- `link` - The link of the contact entry.
+
+Example:
+
+```json
+{
+  "all": [
+    {
+      "text": "test@smith.example",
+      "icon": "bi bi-envelope",
+      "link": "mailto:john@smith.example"
+    },
+    {
+      "text": "+1 234 56789",
+      "icon": "bi bi-telephone",
+      "link": ""
+    },
+    ...
+}
+```
+
+### Skills
+
+_The skills section is used for the skills information of the CV, that will be displayed on the left side of the CV._
+
+The skills section is structured as an array of JSON objects. Each JSON object represents a skill entry.
+
+- `name` - The name of the skill.
+- `link` - The link to get more information about the skill.
+- `url` - The URL of the logo to display.
+
+You can also leave the `url` empty to use a predefined logo that can be found [here](src/assets/icons/logos). The predefined logos are named after the skill name and will be used if the name of the skill matches the name of the predefined logo (case insensitive and the ending `.png` is not required).
+
+Example:
+
+```json
+{
+  "all": [
+    {
+      "name": "Angular",
+      "link": "https://angular.io/",
+      "url": ""
+    },
+        {
+      "name": "Next.js",
+      "link": "https://nextjs.org/",
+      "url": "https://creazilla-store.fra1.digitaloceanspaces.com/icons/3219990/nextjs-icon-md.png"
+    },
+    ...
+}
+```
+
+## Jobs
+
+_The jobs section is used for the job experience information of the CV. And will be displayed on the right side of the CV._
+
+The jobs section is structured as an array of JSON objects. Each JSON object represents a job entry.
+
+- `job` - The job title.
+- `company` - The company name.
+- `url` - The URL of the company.
+- `location` - The location of the company.
+- `date` - The date of the job.
+- `description` - An array of strings that describes the job in bullet points.
+
+Example:
+
+```json
+{
+  "en": [
+    {
+      "job": "Full Stack Developer",
+      "company": "Smith Corp",
+      "url": "https://www.smith-corp.com/",
+      "location": "San Francisco",
+      "date": "January 2023 - present",
+      "description": [
+        "Doing stuff",
+        "Doing more stuff",
+        "Doing even more stuff"
+      ]
+    },
+    ...
+}
+```
+
+### Education
+
+_The education section is used for the education information of the CV. And will be displayed on the right side of the CV._
+
+The education section is structured as an array of JSON objects. Each JSON object represents an education entry.
+
+- `name` - The name of the education.
+- `school` - The name of the institution.
+- `location` - The location of the institution.
+- `year` - The year of the education.
+- `description` - A string that gives more information about the education i.e. the grade.
+
+Example:
+
+```json
+{
+  "en": [
+    {
+      "name": "Computer Science B.Sc.",
+      "school": "MIT",
+      "location": "Cambridge, MA",
+      "year": "ongoing",
+      "description": "Current grade: B"
+    },
+    ...
+}
+```
+
+## Other
+
+_The other section is used for the custom topics of the CV. And will be displayed on the right side of the CV._
+
+The other section is structured as an array of JSON objects. Each JSON object represents a custom topic entry.
+
+---
+
+## Print
+
+> Export via **Google Chrome** or **Microsoft Edge** for the best quality!
 
 1. Click on the print button
 2. Select the desired printer to _"Save as PDF"_
@@ -75,8 +303,20 @@ To add an image to the skills section add the image to the [src/assets/icons/log
 
 ---
 
+## Local installation
+
+1. Clone the repository
+2. Run `npm start` to start the development server and install the dependencies
+3. Navigate to [http://localhost:4200/](http://localhost:4200/)
+
+---
+
 _This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.2._
 
 ---
 
 By [Philipp B.](https://github.com/cophilot)
+
+```
+
+```
