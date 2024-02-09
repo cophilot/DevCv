@@ -50,7 +50,8 @@
     overflow-x: hidden;
     overflow-y: auto;
   }
-  button {
+  button,
+  a {
     width: 200px;
     border: none;
     background-color: white;
@@ -71,6 +72,13 @@
   }
   .cancel {
     background-color: red;
+  }
+  .help {
+    background-color: white;
+    color: black;
+    &:hover {
+      scale: 1.1;
+    }
   }
 }
 

@@ -303,12 +303,12 @@ export class PropsService {
     const general = this.getGeneral();
     console.log(general);
 
-    const name = general.firstname + '_' + general.lastname;
+    const name = general.firstname + '-' + general.lastname;
 
     let a = document.createElement('a');
     let file = new Blob([JSON.stringify(data)], { type: 'application/json' });
     a.href = URL.createObjectURL(file);
-    a.download = name + '-CV-' + this.LANG + '.json';
+    a.download = name + '-DevCV.json';
     a.click();
   }
 

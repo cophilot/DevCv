@@ -22,6 +22,23 @@
 
 ---
 
+- [Privacy](#privacy)
+- [Settings](#settings)
+- [Add your own data](#add-your-own-data)
+- [Languages](#languages)
+  - [Multiple languages](#multiple-languages)
+  - [Universal language](#universal-language)
+- [Headings](#headings)
+  - [General](#general)
+  - [Contact](#contact)
+  - [Skills](#skills)
+  - [Jobs](#jobs)
+  - [Education](#education)
+  - [Other](#other)
+- [Spacing](#spacing)
+- [Print](#print)
+- [Local installation](#local-installation)
+
 ---
 
 ## Privacy
@@ -216,7 +233,7 @@ Example:
 }
 ```
 
-## Jobs
+### Jobs
 
 _The jobs section is used for the job experience information of the CV. And will be displayed on the right side of the CV._
 
@@ -278,11 +295,55 @@ Example:
 }
 ```
 
-## Other
+### Other
 
 _The other section is used for the custom topics of the CV. And will be displayed on the right side of the CV._
 
 The other section is structured as an array of JSON objects. Each JSON object represents a custom topic entry.
+
+- `id` - The id of the custom topic.
+- `title` - The title of the custom topic (will be used as the heading).
+- `description` - A string that describes the custom topic.
+- `list` - An array of strings that describes the custom topic in bullet points.
+
+Example:
+
+```json
+{
+  "en": [
+    {
+      "id": "certification",
+      "title": "Certifications",
+      "description": "",
+      "list": [
+        "Azure Fundamentals",
+        "AWS Cloud Practitioner"
+      ]
+    },
+```
+
+---
+
+## Spacing
+
+To give the CV a better look, you can add some spacing betwen the topics to align the content better. You can edit the spacing in the settings menu.
+
+The spacing is a JSON object and descripes how many pixels the spacing should be after the specific topic to the next topic.
+
+The keys of the JSON object are the topic ids (for the custom topics) or the names of the topics (for the predefined topics).
+
+Example: To add a 70px gap after the Skills section so that the languages section is on the next page and a 130px gap after the custom certification section, you can add the following JSON object to the spacing settings:
+
+```json
+{
+  "contact": 0,
+  "skills": 70,
+  "languages": 0,
+  "work": 0,
+  "education": 0,
+  "certification": 130
+}
+```
 
 ---
 
@@ -290,7 +351,7 @@ The other section is structured as an array of JSON objects. Each JSON object re
 
 > Export via **Google Chrome** or **Microsoft Edge** for the best quality!
 
-1. Click on the print button
+1. Click on the print button in the settings menu
 2. Select the desired printer to _"Save as PDF"_
 3. Choose the pages you want to export (e.g. 1-2)
 4. Click on _"More settings"_
@@ -316,7 +377,3 @@ _This project was generated with [Angular CLI](https://github.com/angular/angula
 ---
 
 By [Philipp B.](https://github.com/cophilot)
-
-```
-
-```
