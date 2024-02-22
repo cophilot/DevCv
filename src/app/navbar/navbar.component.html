@@ -74,93 +74,115 @@
         <button class="contentBtn" (click)="import()">Import</button>
         <button class="contentBtn" (click)="export()">Export</button>
       </div>
-    </div>
-  </div>
-  <div *ngIf="!completeClose">
-    <div style="right: 50px; bottom: 50px">
-      <a href="https://philipp-bonin.com/" class="textShadow" target="_blank">
-        by Philipp B.
-      </a>
-    </div>
-  </div>
-  <div *ngIf="!isClosed && !completeClose">
-    <div style="right: 20px; top: 20px">
-      <button class="languageBtn" (click)="toggleLanguage()">
-        {{ getLanguage() }}
-      </button>
-      <button class="printBtn" (click)="print()">PRINT</button>
-      <button class="languageBtn" (click)="isClosed = true">X</button>
-    </div>
+      <div style="left: 20px; top: 550px" class="vertical">
+        <button
+          *ngIf="!resetSure"
+          class="contentBtn"
+          (click)="resetUnSure()"
+          style="background-color: red"
+        >
+          Reset
+        </button>
+        <button
+          *ngIf="resetSure"
+          class="contentBtn"
+          (click)="reset()"
+          style="background-color: red"
+        >
+          Are your sure?
+        </button>
+      </div>
+      <div *ngIf="!completeClose">
+        <div style="right: 50px; bottom: 35px; font-weight: bold">
+          <a
+            href="https://philipp-bonin.com/"
+            class="textShadow"
+            target="_blank"
+          >
+            by Philipp B.
+          </a>
+        </div>
+      </div>
+      <div *ngIf="!isClosed && !completeClose">
+        <div style="right: 20px; top: 20px">
+          <button class="languageBtn" (click)="toggleLanguage()">
+            {{ getLanguage() }}
+          </button>
+          <button class="printBtn" (click)="print()">PRINT</button>
+          <button class="languageBtn" (click)="isClosed = true">X</button>
+        </div>
 
-    <div class="horizontal" style="left: 20px; bottom: 20px">
-      <button
-        class="colorBtn"
-        style="background-color: #4caf51"
-        (click)="setColorScheme('green-light')"
-      ></button>
-      <button
-        class="colorBtn"
-        style="background-color: #008000"
-        (click)="setColorScheme('green-dark')"
-      ></button>
-      <button
-        class="colorBtn"
-        style="background-color: #2a009c"
-        (click)="setColorScheme('blue-dark')"
-      ></button>
-      <button
-        class="colorBtn"
-        style="background-color: #4169e1"
-        (click)="setColorScheme('blue-light')"
-      ></button>
-      <button
-        class="colorBtn"
-        style="background-color: #daa520"
-        (click)="setColorScheme('orange')"
-      ></button>
-      <button
-        class="colorBtn"
-        style="background-color: #008080"
-        (click)="setColorScheme('blue-green')"
-      ></button>
-      <button
-        class="colorBtn"
-        style="background-color: #708090"
-        (click)="setColorScheme('grey-light')"
-      ></button>
-      <button
-        class="colorBtn"
-        style="background-color: #800020"
-        (click)="setColorScheme('wine-red')"
-      ></button>
-      <button
-        class="colorBtn"
-        style="background-color: #dc143c"
-        (click)="setColorScheme('red-dark')"
-      ></button>
-      <button
-        class="colorBtn"
-        style="background-color: #ff4500"
-        (click)="setColorScheme('red-light')"
-      ></button>
-      <button
-        class="colorBtn"
-        style="background-color: #9966cc"
-        (click)="setColorScheme('purple')"
-      ></button>
-      <button
-        class="colorBtn"
-        style="background-color: #22f4ae"
-        (click)="setColorScheme('yellow')"
-      ></button>
-      <p class="dataInfo">
-        <i> All data is stored only in your browser. </i>
-      </p>
+        <div class="horizontal" style="left: 20px; bottom: 20px">
+          <button
+            class="colorBtn"
+            style="background-color: #4caf51"
+            (click)="setColorScheme('green-light')"
+          ></button>
+          <button
+            class="colorBtn"
+            style="background-color: #008000"
+            (click)="setColorScheme('green-dark')"
+          ></button>
+          <button
+            class="colorBtn"
+            style="background-color: #2a009c"
+            (click)="setColorScheme('blue-dark')"
+          ></button>
+          <button
+            class="colorBtn"
+            style="background-color: #4169e1"
+            (click)="setColorScheme('blue-light')"
+          ></button>
+          <button
+            class="colorBtn"
+            style="background-color: #daa520"
+            (click)="setColorScheme('orange')"
+          ></button>
+          <button
+            class="colorBtn"
+            style="background-color: #008080"
+            (click)="setColorScheme('blue-green')"
+          ></button>
+          <button
+            class="colorBtn"
+            style="background-color: #708090"
+            (click)="setColorScheme('grey-light')"
+          ></button>
+          <button
+            class="colorBtn"
+            style="background-color: #800020"
+            (click)="setColorScheme('wine-red')"
+          ></button>
+          <button
+            class="colorBtn"
+            style="background-color: #dc143c"
+            (click)="setColorScheme('red-dark')"
+          ></button>
+          <button
+            class="colorBtn"
+            style="background-color: #ff4500"
+            (click)="setColorScheme('red-light')"
+          ></button>
+          <button
+            class="colorBtn"
+            style="background-color: #9966cc"
+            (click)="setColorScheme('purple')"
+          ></button>
+          <button
+            class="colorBtn"
+            style="background-color: #22f4ae"
+            (click)="setColorScheme('yellow')"
+          ></button>
+          <p class="dataInfo">
+            <i> All data is stored only in your browser. </i>
+          </p>
+        </div>
+      </div>
     </div>
+    <app-editor
+      [name]="editContent"
+      *ngIf="editContent != ''"
+      (closeEmitter)="editContent = ''"
+    ></app-editor>
   </div>
 </div>
-<app-editor
-  [name]="editContent"
-  *ngIf="editContent != ''"
-  (closeEmitter)="editContent = ''"
-></app-editor>

@@ -308,14 +308,13 @@ export class PropsService {
     let a = document.createElement('a');
     let file = new Blob([JSON.stringify(data)], { type: 'application/json' });
     a.href = URL.createObjectURL(file);
-    a.download = name + '-DevCV.json';
+    a.download = name + '-DevCV.devcv';
     a.click();
   }
 
   static import() {
     let input = document.createElement('input');
     input.type = 'file';
-    input.accept = 'application/json';
     input.onchange = (event: any) => {
       const file = event.target.files[0];
       const reader = new FileReader();
@@ -346,5 +345,13 @@ export class PropsService {
       };
     };
     input.click();
+  }
+
+  static reset() {
+    localStorage.clear();
+    if (this.cookiesAllowed) {
+      this.acceptCookies();
+    }
+    window.location.reload();
   }
 }

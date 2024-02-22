@@ -9,6 +9,7 @@ import { PropsService } from '../service/props.service';
 export class NavbarComponent {
   isClosed = true;
   completeClose = false;
+  resetSure = false;
 
   editContent = '';
 
@@ -76,5 +77,16 @@ export class NavbarComponent {
 
   import() {
     PropsService.import();
+  }
+
+  resetUnSure() {
+    this.resetSure = true;
+    setTimeout(() => {
+      this.resetSure = false;
+    }, 10000);
+  }
+
+  reset() {
+    PropsService.reset();
   }
 }
