@@ -6,11 +6,11 @@
         src="assets/logo.png"
         alt="Options"
         style="width: 150px; height: 150px; cursor: pointer"
-        (click)="isClosed = false"
+        (click)="navigateHome()"
       />
     </div>
   </div>
-  <div *ngIf="isClosed && !completeClose">
+  <div *ngIf="isClosed && !completeClose && !getMode().isViewMode">
     <div style="right: 70px; top: 70px">
       <img
         class="imgShadow settings"

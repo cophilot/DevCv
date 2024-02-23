@@ -20,6 +20,9 @@ import { EditorComponent } from './editor/editor.component';
 
 import { FormsModule } from '@angular/forms';
 import { CookieMessageComponent } from './cookie-message/cookie-message.component';
+import { CvEditorComponent } from './cv-editor/cv-editor.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { CvViewerComponent } from './cv-viewer/cv-viewer.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +42,12 @@ import { CookieMessageComponent } from './cookie-message/cookie-message.componen
     PageNumberComponent,
     EditorComponent,
     CookieMessageComponent,
+    CvEditorComponent,
+    CvViewerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }], // Add HashLocationStrategy as a provider
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

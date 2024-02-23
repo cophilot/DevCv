@@ -1,4 +1,8 @@
-<p class="pageNumber" [style.top.px]="getOffsetTop()">
+<p
+  class="pageNumber"
+  [style.top.px]="getOffsetTop()"
+  *ngIf="!getMode().isViewMode"
+>
   <i>
     <span style="margin-right: 20px"> {{ "CV - " + getFullName() }} </span>
     <span></span>

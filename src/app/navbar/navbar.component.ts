@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PropsService } from '../service/props.service';
+import { ModeService } from '../service/mode.service';
 
 @Component({
   selector: 'app-navbar',
@@ -97,5 +98,13 @@ export class NavbarComponent {
 
   reset() {
     PropsService.reset();
+  }
+
+  navigateHome() {
+    window.location.href = '/';
+  }
+
+  getMode() {
+    return ModeService;
   }
 }

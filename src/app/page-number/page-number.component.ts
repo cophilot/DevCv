@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PropsService } from '../service/props.service';
+import { ModeService } from '../service/mode.service';
 
 @Component({
   selector: 'app-page-number',
@@ -20,5 +21,9 @@ export class PageNumberComponent {
       ' ' +
       PropsService.getGeneral().lastname
     );
+  }
+
+  getMode() {
+    return ModeService;
   }
 }

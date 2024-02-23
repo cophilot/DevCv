@@ -1,5 +1,8 @@
 <div class="rootContainer">
-  <div class="a4 a4Height pageSplitter">
+  <div
+    class="a4 a4Height pageSplitter"
+    [class]="getMode().isViewMode ? 'view' : ''"
+  >
     <app-leftbar></app-leftbar>
     <app-rightbar></app-rightbar>
 
