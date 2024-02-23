@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PropsService } from '../service/props.service';
 import { ModeService } from '../service/mode.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,7 @@ export class NavbarComponent {
   copyText = 'Copy to clipboard';
   editContent = '';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   toggleLanguage(): void {
     PropsService.toggleLanguage();
@@ -101,7 +102,10 @@ export class NavbarComponent {
   }
 
   navigateHome() {
-    window.location.href = '/';
+    this.router.navigate(['/']);
+  }
+  navigateView() {
+    this.router.navigate(['/view']);
   }
 
   getMode() {

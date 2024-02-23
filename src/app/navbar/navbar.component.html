@@ -12,13 +12,8 @@
   </div>
   <div *ngIf="isClosed && !completeClose && !getMode().isViewMode">
     <div style="right: 70px; top: 70px">
-      <img
-        class="imgShadow settings"
-        src="assets/settings.png"
-        alt="Options"
-        style="width: 50px; height: 50px; cursor: pointer"
-        (click)="isClosed = false"
-      />
+      <i class="bi bi-gear iconBtn settings" (click)="isClosed = false"></i>
+
       <a
         class="textShadow qm"
         href="https://github.com/cophilot/DevCv#devcv"
@@ -26,6 +21,7 @@
         style="
           font-size: 50px;
           margin-top: 20px;
+          margin-bottom: 20px;
           justify-content: center;
           align-items: center;
           display: flex;
@@ -34,6 +30,7 @@
       >
         ?
       </a>
+      <i class="bi bi-eye iconBtn mt" (click)="navigateView()"></i>
     </div>
   </div>
   <div *ngIf="!isClosed && !completeClose">
