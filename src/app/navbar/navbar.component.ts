@@ -11,6 +11,7 @@ export class NavbarComponent {
   completeClose = false;
   resetSure = false;
 
+  copyText = 'Copy to clipboard';
   editContent = '';
 
   constructor() {}
@@ -73,6 +74,14 @@ export class NavbarComponent {
 
   export() {
     PropsService.export();
+  }
+
+  copyData() {
+    PropsService.copyToClipboard();
+    this.copyText = 'Copied!';
+    setTimeout(() => {
+      this.copyText = 'Copy to clipboard';
+    }, 2000);
   }
 
   import() {

@@ -1,5 +1,7 @@
 .background {
-  width: 283px;
+  //width: 283px;
+  background-color: var(--primary);
+  max-width: 293px;
   background-color: var(--primary);
 }
 
@@ -11,10 +13,10 @@
   max-width: 293px;
   min-height: 293px;
   max-height: 293px;
-  margin-left: -10px;
+  //margin-left: -10px;
 }
 .container {
-  margin-left: 20px;
+  margin-left: 30px;
 }
 .contacts {
   display: flex;

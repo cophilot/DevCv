@@ -4,7 +4,11 @@
     {{ getGeneralInfo().firstname }}
     <span style="color: var(--primary)">{{ getGeneralInfo().lastname }}</span>
   </p>
-  <div [ngSwitch]="getLanguage()" style="margin-top: 40px">
+  <div
+    [ngSwitch]="getLanguage()"
+    style="margin-top: 40px"
+    *ngIf="getGeneralInfo().dob && getGeneralInfo().pob"
+  >
     <p *ngSwitchCase="'DE'">
       <b>
         Geburtsdatum: {{ getGeneralInfo().dob }}

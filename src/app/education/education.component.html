@@ -9,7 +9,11 @@
       </div>
       <div class="compInfo">
         <p>
-          {{ edu.school + " - " + edu.location }}
+          {{
+            (edu.school || "") +
+              (edu.location && edu.school ? " - " : "") +
+              (edu.location || "")
+          }}
         </p>
       </div>
       <div class="description">

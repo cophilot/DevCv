@@ -191,8 +191,8 @@ export class PropsService {
       return json[this.LANG.toLowerCase()];
     }
     if (!json.hasOwnProperty('en')) {
-      alert('Language not found: ' + this.LANG + ' in ' + JSON.stringify(json));
-      return {};
+      //alert('Language not found: ' + this.LANG + ' in ' + JSON.stringify(json));
+      return [];
     }
     return json.en;
   }
@@ -286,7 +286,24 @@ export class PropsService {
   }
 
   static export() {
-    let data = {
+    const general = this.getGeneral();
+    const name = general.firstname + '-' + general.lastname;
+
+    let a = document.createElement('a');
+    let file = new Blob([JSON.stringify(this.getAllData())], {
+      type: 'application/json',
+    });
+    a.href = URL.createObjectURL(file);
+    a.download = name + '-DevCV.devcv';
+    a.click();
+  }
+
+  static copyToClipboard() {
+    navigator.clipboard.writeText(JSON.stringify(this.getAllData()));
+  }
+
+  static getAllData(): any {
+    return {
       contact: this.contact,
       skills: this.skills,
       jobs: this.jobs,
@@ -298,18 +315,6 @@ export class PropsService {
       language: this.LANG,
       image: this.IMAGE,
     };
-    // save as json file
-
-    const general = this.getGeneral();
-    console.log(general);
-
-    const name = general.firstname + '-' + general.lastname;
-
-    let a = document.createElement('a');
-    let file = new Blob([JSON.stringify(data)], { type: 'application/json' });
-    a.href = URL.createObjectURL(file);
-    a.download = name + '-DevCV.devcv';
-    a.click();
   }
 
   static import() {
@@ -329,7 +334,7 @@ export class PropsService {
         this.other = data.other;
         this.general = data.general;
         this.spacing = data.spacing;
-        this.SCHEME = data.colorScheme;
+        this.setScheme(data.colorScheme);
         this.LANG = data.language;
         this.IMAGE = data.image;
         this.setLS('CVcolorScheme', this.SCHEME);
