@@ -1,0 +1,42 @@
+
+body {
+    font-family: sans-serif;
+    background-color: #1d1d1d;
+    color: #fff;
+}
+.centerBox {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+a {
+    color: #fff;
+}
+.mainText {
+    font-size: 1.5rem;
+}
+.logo {
+    animation: wiggle 30s linear infinite;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(3deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-3deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

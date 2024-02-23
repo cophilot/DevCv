@@ -1,0 +1,9 @@
+# This is the .templify file of the Example template.
+# This file is used by templify to generate new files from this template.
+# You can use the following variables in this file:
+# description: The description of the template
+# path: The path of the template
+description:This is an example template.
+path:templify-example/web/$$name.pascal$$Example
+
+.source:https://github.com/cophilot/templify-vault/tree/main/Example/Example
