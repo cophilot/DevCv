@@ -345,8 +345,11 @@ export class PropsService {
   }
 
   static importData(data: any) {
+    this.LANGUAGES = [];
+
     this.contact = data.contact;
     this.skills = data.skills;
+
     this.jobs = data.jobs;
     this.education = data.education;
     this.other = data.other;
@@ -355,6 +358,24 @@ export class PropsService {
     this.setScheme(data.colorScheme);
     this.LANG = data.language;
     this.IMAGE = data.image;
+
+    this.addLanguage(this.contact);
+    this.addLanguage(this.skills);
+    this.addLanguage(this.jobs);
+    this.addLanguage(this.education);
+    this.addLanguage(this.other);
+    this.addLanguage(this.general);
+    if (this.LANGUAGES.includes(this.LANG) == false) {
+      this.LANGUAGES.push(this.LANG);
+    }
+
+    if (this.LANGUAGES.length == 0) {
+      this.LANGUAGES.push('EN');
+      this.LANG = 'EN';
+    }
+
+    this.setLangIndex();
+
     this.setLS('CVcolorScheme', this.SCHEME);
     this.setLS('CVLanguage', this.LANG);
     this.setLS('CVImage', this.IMAGE);

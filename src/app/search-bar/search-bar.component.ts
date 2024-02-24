@@ -35,14 +35,13 @@ export class SearchBarComponent {
       return;
     }
     this.loading = true;
+    this.error = false;
 
     // check if user exists
     fetch(`https://api.github.com/users/${this.searchValue}`)
       .then((response) => {
         if (response.status === 404) {
-          this.loading = false;
-          this.error = true;
-          this.searchValue = '';
+          this.onError();
           return;
         }
 
@@ -58,21 +57,24 @@ export class SearchBarComponent {
                   return;
                 }
               });
-              this.loading = false;
-              this.error = true;
-              this.searchValue = '';
-              console.log('no repo');
+              this.onError();
             });
           }
         );
       })
       .catch((error) => {
-        this.loading = false;
-        this.error = true;
-        this.searchValue = '';
+        this.onError();
       });
+  }
 
-    // this.router.navigate(['/user', this.searchValue]);
-    // this.onClose.emit();
+  onError() {
+    this.loading = false;
+
+    this.error = true;
+    this.searchValue = '';
+
+    setTimeout(() => {
+      this.error = false;
+    }, 3000);
   }
 }

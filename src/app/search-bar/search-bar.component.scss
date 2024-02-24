@@ -57,11 +57,32 @@
   animation: rotate 1s linear infinite;
 }
 
+.doShake {
+  animation: shake 0.3s linear;
+}
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translateX(-50%);
+  }
+  25% {
+    transform: translateX(-55%);
+  }
+  50% {
+    transform: translateX(-45%);
+  }
+  75% {
+    transform: translateX(-55%);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }

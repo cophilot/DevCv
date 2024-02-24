@@ -1,4 +1,4 @@
-<div class="background leftHeight">
+<div class="background" [class]="getMode().isViewMode ? '' : 'leftHeight'">
   <img [src]="getImage()" alt="picture" class="foto" *ngIf="getImage() != ''" />
   <div class="container">
     <div class="bar wh" *ngIf="getImage() != ''"></div>

@@ -35,7 +35,7 @@ export function getExampleContact(): any {
       {
         text: 'John-Smith-Street 42\n12345, New York\nUSA',
         icon: 'bi bi-geo-alt',
-        link: 'https://www.google.com/maps/place/Darmstadt/',
+        link: 'https://www.google.com/maps/place/Area+51',
       },
       {
         text: 'john-smith.example',

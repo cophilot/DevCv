@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PropsService } from '../service/props.service';
+import { ModeService } from '../service/mode.service';
 
 @Component({
   selector: 'app-leftbar',
@@ -27,5 +28,9 @@ export class LeftbarComponent {
 
   getImage() {
     return PropsService.getImg();
+  }
+
+  getMode() {
+    return ModeService;
   }
 }
