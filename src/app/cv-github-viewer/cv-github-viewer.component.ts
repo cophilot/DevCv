@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PropsService } from '../service/props.service';
 
 @Component({
   selector: 'app-cv-github-viewer',
@@ -41,7 +42,13 @@ export class CvGithubViewerComponent {
       if (fileName === '') {
         throw new Error('No .devcv file found');
       }
-      console.log(fileName);
+      resp = await fetch(
+        `https://raw.githubusercontent.com/${
+          (this, this.username)
+        }/mydevcv/${branch}/${fileName}`
+      );
+      data = await resp.text();
+      PropsService.importUserData(data);
 
       this.loading = false;
       this.error = false;

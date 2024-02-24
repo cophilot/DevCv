@@ -103,6 +103,8 @@ export class NavbarComponent {
   }
 
   navigateHome() {
+    PropsService.unlockTheStorage();
+    PropsService.restoreBackup();
     this.router.navigate(['/']);
   }
   navigateView() {

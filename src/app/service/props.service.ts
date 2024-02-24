@@ -12,6 +12,7 @@ export class PropsService {
   private static LANGUAGES = ['EN'];
   private static initial = false;
   private static cookiesAllowed = false;
+  private static lockStorage = false;
 
   private static contact: any;
   private static general: any;
@@ -23,6 +24,8 @@ export class PropsService {
 
   private static IMAGE =
     Math.random() > 0.1 ? 'assets/foto_square.jpg' : 'assets/foto_square2.jpg';
+
+  private static backupData: any | null = null;
 
   static init() {
     if (this.initial) {
@@ -267,7 +270,7 @@ export class PropsService {
   }
 
   static setLS(name: string, value: string) {
-    if (this.cookiesAllowed == false) {
+    if (!this.cookiesAllowed || this.lockStorage) {
       return;
     }
     localStorage.setItem(name, value);
@@ -327,29 +330,41 @@ export class PropsService {
       reader.onload = () => {
         const binary = reader.result as string;
         const data = JSON.parse(binary);
-        this.contact = data.contact;
-        this.skills = data.skills;
-        this.jobs = data.jobs;
-        this.education = data.education;
-        this.other = data.other;
-        this.general = data.general;
-        this.spacing = data.spacing;
-        this.setScheme(data.colorScheme);
-        this.LANG = data.language;
-        this.IMAGE = data.image;
-        this.setLS('CVcolorScheme', this.SCHEME);
-        this.setLS('CVLanguage', this.LANG);
-        this.setLS('CVImage', this.IMAGE);
-        this.setLS('contact', JSON.stringify(this.contact));
-        this.setLS('skills', JSON.stringify(this.skills));
-        this.setLS('jobs', JSON.stringify(this.jobs));
-        this.setLS('education', JSON.stringify(this.education));
-        this.setLS('other', JSON.stringify(this.other));
-        this.setLS('general', JSON.stringify(this.general));
-        this.setLS('spacing', JSON.stringify(this.spacing));
+        this.importData(data);
       };
     };
     input.click();
+  }
+
+  static importUserData(dataString: string) {
+    this.lockTheStorage();
+    this.createBackup();
+
+    const data = JSON.parse(dataString);
+    this.importData(data);
+  }
+
+  static importData(data: any) {
+    this.contact = data.contact;
+    this.skills = data.skills;
+    this.jobs = data.jobs;
+    this.education = data.education;
+    this.other = data.other;
+    this.general = data.general;
+    this.spacing = data.spacing;
+    this.setScheme(data.colorScheme);
+    this.LANG = data.language;
+    this.IMAGE = data.image;
+    this.setLS('CVcolorScheme', this.SCHEME);
+    this.setLS('CVLanguage', this.LANG);
+    this.setLS('CVImage', this.IMAGE);
+    this.setLS('contact', JSON.stringify(this.contact));
+    this.setLS('skills', JSON.stringify(this.skills));
+    this.setLS('jobs', JSON.stringify(this.jobs));
+    this.setLS('education', JSON.stringify(this.education));
+    this.setLS('other', JSON.stringify(this.other));
+    this.setLS('general', JSON.stringify(this.general));
+    this.setLS('spacing', JSON.stringify(this.spacing));
   }
 
   static reset() {
@@ -358,5 +373,25 @@ export class PropsService {
       this.acceptCookies();
     }
     window.location.reload();
+  }
+
+  static lockTheStorage() {
+    this.lockStorage = true;
+  }
+
+  static unlockTheStorage() {
+    this.lockStorage = false;
+  }
+
+  static createBackup() {
+    this.backupData = this.getAllData();
+  }
+
+  static restoreBackup() {
+    if (this.backupData == null) {
+      return;
+    }
+    this.importData(this.backupData);
+    this.backupData = null;
   }
 }
