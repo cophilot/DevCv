@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PropsService } from '../service/props.service';
+import { UserCacheService } from '../service/user-cache.service';
 
 @Component({
   selector: 'app-cv-github-viewer',
@@ -13,12 +14,26 @@ export class CvGithubViewerComponent {
   error: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router) {}
-  async ngOnInit() {
+
+  ngOnInit() {
+    this.username = this.route.snapshot.paramMap.get('id') || '';
+    if (this.username === '') {
+      this.router.navigate(['/']);
+    }
+
+    let data = UserCacheService.getData(this.username);
+
+    if (data == null) {
+      console.log('Fetching user data...');
+      this.fetchData();
+    } else {
+      console.log('Using cached data...');
+      this.show(data);
+    }
+  }
+
+  async fetchData() {
     try {
-      this.username = this.route.snapshot.paramMap.get('id') || '';
-      if (this.username === '') {
-        this.router.navigate(['/']);
-      }
       let resp = await fetch(
         `https://api.github.com/repos/${this.username}/mydevcv`
       );
@@ -48,13 +63,17 @@ export class CvGithubViewerComponent {
         }/mydevcv/${branch}/${fileName}`
       );
       data = await resp.text();
-      PropsService.importUserData(data);
-
-      this.loading = false;
-      this.error = false;
+      UserCacheService.cacheUser(this.username, data);
+      this.show(data);
     } catch (e) {
       this.loading = false;
       this.error = true;
     }
+  }
+
+  show(data: string) {
+    PropsService.importUserData(data);
+    this.loading = false;
+    this.error = false;
   }
 }

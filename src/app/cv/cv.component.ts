@@ -10,7 +10,6 @@ export class CvComponent {
   @Input() viewMode = false;
 
   ngOnInit() {
-    console.log('Viewmode:', this.viewMode);
     ModeService.isViewMode = this.viewMode;
   }
 }
