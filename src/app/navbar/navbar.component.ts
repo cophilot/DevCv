@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
   isClosed = true;
+  searchBar = false;
   completeClose = false;
   resetSure = false;
 

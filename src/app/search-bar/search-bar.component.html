@@ -1,0 +1,10 @@
+<div class="search-bar" [class]="error ? 'error' : ''">
+  <input
+    type="text"
+    class="search-bar-input"
+    placeholder="GitHub username..."
+    [(ngModel)]="searchValue"
+  />
+  <i class="bi bi-search search" (click)="search()" *ngIf="!loading"></i>
+  <i class="bi bi-arrow-clockwise rotate" *ngIf="loading"></i>
+</div>

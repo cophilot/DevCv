@@ -23,6 +23,11 @@ import { CookieMessageComponent } from './cookie-message/cookie-message.componen
 import { CvEditorComponent } from './cv-editor/cv-editor.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CvViewerComponent } from './cv-viewer/cv-viewer.component';
+import { MyIconComponent } from './my-icon/my-icon.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { CvGithubViewerComponent } from './cv-github-viewer/cv-github-viewer.component';
+import { LoadingPageComponent } from './loading-page/loading-page.component';
+import { UserErrorPageComponent } from './user-error-page/user-error-page.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,11 @@ import { CvViewerComponent } from './cv-viewer/cv-viewer.component';
     CookieMessageComponent,
     CvEditorComponent,
     CvViewerComponent,
+    MyIconComponent,
+    SearchBarComponent,
+    CvGithubViewerComponent,
+    LoadingPageComponent,
+    UserErrorPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }], // Add HashLocationStrategy as a provider

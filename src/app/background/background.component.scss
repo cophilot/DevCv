@@ -1,16 +1,17 @@
 .bg {
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
+  left: 0;
+  width: 200%;
   height: 100%;
-  z-index: -100;
-
-  width: 900px;
-  .primSec {
-    background-color: var(--primary);
-    height: 100%;
-    width: 308px;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  img {
+    width: 200%;
+    object-fit: cover;
+    rotate: -30deg;
   }
 }

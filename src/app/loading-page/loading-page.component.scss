@@ -1,0 +1,43 @@
+.bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  .logo {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 50px;
+  }
+}
+
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+  background-color: white;
+}
+@keyframes l5 {
+  0% {
+    box-shadow: 20px 0 #540000, -20px 0 #54000150;
+    background: #540000;
+  }
+  33% {
+    box-shadow: 20px 0 #540000, -20px 0 #54000150;
+    background: #54000150;
+  }
+  66% {
+    box-shadow: 20px 0 #54000150, -20px 0 #540000;
+    background: #54000150;
+  }
+  100% {
+    box-shadow: 20px 0 #54000150, -20px 0 #540000;
+    background: #540000;
+  }
+}

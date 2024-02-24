@@ -4,33 +4,23 @@
       <img
         class="imgShadow logo"
         src="assets/logo.png"
-        alt="Options"
         style="width: 150px; height: 150px; cursor: pointer"
         (click)="navigateHome()"
       />
     </div>
   </div>
   <div *ngIf="isClosed && !completeClose && !getMode().isViewMode">
-    <div style="right: 70px; top: 70px">
-      <i class="bi bi-gear iconBtn settings" (click)="isClosed = false"></i>
-
+    <div style="right: 30px; top: 20px">
+      <app-my-icon cls="bi bi-gear" (click)="isClosed = false"></app-my-icon>
+      <app-my-icon cls="bi bi-eye" (click)="navigateView()"></app-my-icon>
+      <app-my-icon cls="bi bi-search" (click)="searchBar = true"></app-my-icon>
       <a
         class="textShadow qm"
         href="https://github.com/cophilot/DevCv#devcv"
         target="_blank"
-        style="
-          font-size: 50px;
-          margin-top: 20px;
-          margin-bottom: 20px;
-          justify-content: center;
-          align-items: center;
-          display: flex;
-          cursor: pointer;
-        "
       >
-        ?
+        <app-my-icon cls="bi bi-question-circle"></app-my-icon>
       </a>
-      <i class="bi bi-eye iconBtn mt" (click)="navigateView()"></i>
     </div>
   </div>
   <div *ngIf="!isClosed && !completeClose">
@@ -184,3 +174,17 @@
     ></app-editor>
   </div>
 </div>
+
+<div
+  style="position: fixed; right: 50px; top: 50px"
+  *ngIf="!completeClose && getMode().isViewMode"
+>
+  <button class="btn" (click)="toggleLanguage()">
+    {{ getLanguage() }}
+  </button>
+</div>
+
+<app-search-bar
+  *ngIf="!completeClose && searchBar"
+  (onClose)="searchBar = false"
+></app-search-bar>
