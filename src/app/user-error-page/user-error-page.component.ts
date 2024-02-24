@@ -8,11 +8,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-error-page.component.scss'],
 })
 export class UserErrorPageComponent {
-  @Input() username: string = '';
-
+  static visible = false;
+  static heading = 'Error';
+  static info = '';
   constructor(private router: Router) {}
 
+  static show(heading = 'Error', info = '') {
+    UserErrorPageComponent.heading = heading;
+    UserErrorPageComponent.info = info;
+    UserErrorPageComponent.visible = true;
+  }
+
+  static hide() {
+    UserErrorPageComponent.visible = false;
+  }
+
+  getHeading() {
+    return UserErrorPageComponent.heading;
+  }
+
+  getInfo() {
+    return UserErrorPageComponent.info;
+  }
+
+  isVisible() {
+    return UserErrorPageComponent.visible;
+  }
+
   navigateHome() {
+    UserErrorPageComponent.hide();
     PropsService.unlockTheStorage();
     PropsService.restoreBackup();
     this.router.navigate(['/']);

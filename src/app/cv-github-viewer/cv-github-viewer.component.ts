@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PropsService } from '../service/props.service';
 import { UserCacheService } from '../service/user-cache.service';
+import { LoadingPageComponent } from '../loading-page/loading-page.component';
+import { UserErrorPageComponent } from '../user-error-page/user-error-page.component';
 
 @Component({
   selector: 'app-cv-github-viewer',
@@ -10,12 +12,12 @@ import { UserCacheService } from '../service/user-cache.service';
 })
 export class CvGithubViewerComponent {
   username: string = '';
-  loading: boolean = true;
-  error: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
+    LoadingPageComponent.show('Fetching user data...');
+
     this.username = this.route.snapshot.paramMap.get('user') || '';
     if (this.username === '') {
       this.router.navigate(['/']);
@@ -38,7 +40,9 @@ export class CvGithubViewerComponent {
         `https://api.github.com/repos/${this.username}/mydevcv`
       );
       if (resp.status === 404) {
-        throw new Error('Repository not found');
+        throw new Error(
+          'Repository MyDevCv not found for user ' + this.username
+        );
       }
       let data = await resp.json();
       const branch = data.default_branch;
@@ -55,7 +59,7 @@ export class CvGithubViewerComponent {
       });
 
       if (fileName === '') {
-        throw new Error('No .devcv file found');
+        throw new Error('No *.devcv file found in MyDevCv repository');
       }
       resp = await fetch(
         `https://raw.githubusercontent.com/${
@@ -65,15 +69,15 @@ export class CvGithubViewerComponent {
       data = await resp.text();
       UserCacheService.cacheUser(this.username, data);
       this.show(data);
-    } catch (e) {
-      this.loading = false;
-      this.error = true;
+    } catch (e: any) {
+      LoadingPageComponent.hide();
+      UserErrorPageComponent.show('Could not load user data', e.message);
     }
   }
 
   show(data: string) {
     PropsService.importUserData(data);
-    this.loading = false;
-    this.error = false;
+    LoadingPageComponent.hide();
+    UserErrorPageComponent.hide();
   }
 }

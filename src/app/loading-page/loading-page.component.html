@@ -1,4 +1,7 @@
-<div class="bg">
+<div class="bg" *ngIf="isVisible()">
   <img class="logo imgShadow" src="assets/logo.png" />
   <div class="loader"></div>
+  <p class="info">
+    {{ getInfo() }}
+  </p>
 </div>
