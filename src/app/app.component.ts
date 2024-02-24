@@ -11,5 +11,9 @@ export class AppComponent {
 
   constructor() {
     PropsService.init();
+    // zoom out when its on the mobile
+    if (window.innerWidth < 800) {
+      (document.body.style as any).zoom = '50%';
+    }
   }
 }
