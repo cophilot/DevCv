@@ -83,6 +83,22 @@ h2 {
   justify-content: center;
 }
 
+.btn {
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+  &:hover {
+    scale: 1.1;
+  }
+}
+
 .mt {
   margin-top: 50px;
 }

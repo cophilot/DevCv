@@ -6,7 +6,7 @@ import { CvGithubViewerComponent } from './cv-github-viewer/cv-github-viewer.com
 
 const routes: Routes = [
   { path: '', component: CvEditorComponent },
-  { path: 'user/:id', component: CvGithubViewerComponent },
+  { path: 'user/:user', component: CvGithubViewerComponent },
   { path: 'view', component: CvViewerComponent },
   { path: '*', component: CvEditorComponent },
 ];

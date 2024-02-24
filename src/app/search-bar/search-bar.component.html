@@ -5,6 +5,7 @@
     class="search-bar-input"
     placeholder="GitHub username..."
     [(ngModel)]="searchValue"
+    id="search-input"
   />
   <i class="bi bi-search search" (click)="search()" *ngIf="!loading"></i>
   <i class="bi bi-arrow-clockwise rotate" *ngIf="loading"></i>

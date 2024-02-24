@@ -16,6 +16,12 @@ export class SearchBarComponent {
 
   constructor(private router: Router) {}
 
+  ngOnInit(): void {
+    // focus on input
+    const input = document.getElementById('search-input');
+    input?.focus();
+  }
+
   @HostListener('document:keydown.escape', ['$event'])
   close(): void {
     this.loading = false;

@@ -16,7 +16,7 @@ export class CvGithubViewerComponent {
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    this.username = this.route.snapshot.paramMap.get('id') || '';
+    this.username = this.route.snapshot.paramMap.get('user') || '';
     if (this.username === '') {
       this.router.navigate(['/']);
     }
