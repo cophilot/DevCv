@@ -368,6 +368,23 @@ export class PropsService {
     input.click();
   }
 
+  static importSecureUserData(dataString: string, key: string): boolean {
+    try {
+      const data = CryptoJS.AES.decrypt(dataString, key).toString(
+        CryptoJS.enc.Utf8
+      );
+      const json = JSON.parse(data);
+
+      this.lockTheStorage();
+      this.createBackup();
+
+      this.importData(json);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
+
   static importUserData(dataString: string) {
     this.lockTheStorage();
     this.createBackup();
