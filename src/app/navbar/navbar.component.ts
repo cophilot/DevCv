@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { PropsService } from '../service/props.service';
 import { ModeService } from '../service/mode.service';
 import { Router } from '@angular/router';
+import { PasswordInputComponent } from '../password-input/password-input.component';
 
 @Component({
   selector: 'app-navbar',
@@ -77,6 +78,13 @@ export class NavbarComponent {
 
   export() {
     PropsService.export();
+  }
+  exportSecure() {
+    PasswordInputComponent.show().then((pw) => {
+      if (pw) {
+        PropsService.exportSecure(pw);
+      }
+    });
   }
 
   copyData() {

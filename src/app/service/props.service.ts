@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { getExampleByName } from 'src/utils/examples';
 import { CookieMessageComponent } from '../cookie-message/cookie-message.component';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root',
@@ -298,6 +299,37 @@ export class PropsService {
     });
     a.href = URL.createObjectURL(file);
     a.download = name + '-DevCV.devcv';
+    a.click();
+  }
+
+  static exportSecure(key: string | undefined = undefined) {
+    let downloadKey = false;
+    if (key == undefined) {
+      downloadKey = true;
+      key = CryptoJS.lib.WordArray.random(10).toString();
+    }
+    const data = JSON.stringify(this.getAllData());
+    const encrypted = CryptoJS.AES.encrypt(data, key).toString();
+
+    const general = this.getGeneral();
+    const name = general.firstname + '-' + general.lastname;
+
+    let a = document.createElement('a');
+    let file = new Blob([encrypted], {
+      type: 'application/text',
+    });
+    a.href = URL.createObjectURL(file);
+    a.download = name + '-DevCV.devcvs';
+    a.click();
+
+    if (!downloadKey) {
+      return;
+    }
+    let keyFile = new Blob([key], {
+      type: 'application/text',
+    });
+    a.href = URL.createObjectURL(keyFile);
+    a.download = name + '-DevCV.key';
     a.click();
   }
 

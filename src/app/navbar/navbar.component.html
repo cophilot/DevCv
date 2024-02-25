@@ -60,9 +60,12 @@
 
         <button class="contentBtn" (click)="import()">Import</button>
         <button class="contentBtn" (click)="export()">Export</button>
+        <button class="contentBtn" (click)="exportSecure()">
+          Export Secure
+        </button>
         <button class="contentBtn" (click)="copyData()">{{ copyText }}</button>
       </div>
-      <div style="left: 20px; top: 600px" class="vertical">
+      <div style="left: 20px; top: 650px" class="vertical">
         <button
           *ngIf="!resetSure"
           class="contentBtn"
