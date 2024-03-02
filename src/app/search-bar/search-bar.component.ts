@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserCacheService } from '../service/user-cache.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,6 +11,7 @@ export class SearchBarComponent {
   @Output() onClose = new EventEmitter();
 
   searchValue = '';
+  secureMode = false;
 
   loading = false;
   error = false;
@@ -37,6 +39,11 @@ export class SearchBarComponent {
     this.loading = true;
     this.error = false;
 
+    if (UserCacheService.isUserCached(this.searchValue, this.secureMode)) {
+      this.naviagteToUserSide();
+      return;
+    }
+
     // check if user exists
     fetch(`https://api.github.com/users/${this.searchValue}`)
       .then((response) => {
@@ -51,10 +58,7 @@ export class SearchBarComponent {
             response.json().then((data) => {
               data.forEach((repo: any) => {
                 if (repo.name.toLowerCase() === 'mydevcv') {
-                  const user = this.searchValue;
-                  this.close();
-                  this.router.navigate(['/user', user]);
-                  return;
+                  this.naviagteToUserSide();
                 }
               });
               this.onError();
@@ -76,5 +80,15 @@ export class SearchBarComponent {
     setTimeout(() => {
       this.error = false;
     }, 3000);
+  }
+
+  naviagteToUserSide() {
+    const user = this.searchValue;
+    this.close();
+    if (this.secureMode) {
+      this.router.navigate(['/user', user, 'secure']);
+    } else {
+      this.router.navigate(['/user', user]);
+    }
   }
 }

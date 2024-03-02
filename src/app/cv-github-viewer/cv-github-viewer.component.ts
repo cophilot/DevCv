@@ -36,9 +36,7 @@ export class CvGithubViewerComponent {
 
     LoadingPageComponent.show('Fetching user data...');
 
-    let data = UserCacheService.getData(
-      this.username + (isSecure ? '-secure' : '')
-    );
+    let data = UserCacheService.getData(this.username, isSecure);
 
     if (data == null) {
       console.log('Fetching user data...');
@@ -86,10 +84,7 @@ export class CvGithubViewerComponent {
         }/mydevcv/${branch}/${fileName}`
       );
       data = await resp.text();
-      UserCacheService.cacheUser(
-        this.username + (secure ? '-secure' : ''),
-        data
-      );
+      UserCacheService.cacheUser(this.username, data, secure);
       this.show(data, secure);
     } catch (e: any) {
       LoadingPageComponent.hide();

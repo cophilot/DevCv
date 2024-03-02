@@ -1,12 +1,23 @@
 <div class="bg" (click)="close()"></div>
 <div class="search-bar" [class]="error ? 'error doShake' : ''">
-  <input
-    type="text"
-    class="search-bar-input"
-    placeholder="GitHub username..."
-    [(ngModel)]="searchValue"
-    id="search-input"
-  />
-  <i class="bi bi-search search" (click)="search()" *ngIf="!loading"></i>
-  <i class="bi bi-arrow-clockwise rotate" *ngIf="loading"></i>
+  <div class="row">
+    <input
+      type="text"
+      class="search-bar-input"
+      placeholder="GitHub username..."
+      [(ngModel)]="searchValue"
+      id="search-input"
+    />
+    <i class="bi bi-search search" (click)="search()" *ngIf="!loading"></i>
+    <i class="bi bi-arrow-clockwise rotate" *ngIf="loading"></i>
+  </div>
+  <div class="row">
+    <b>Secure</b>
+    <div>
+      <input type="checkbox" id="switch" [(ngModel)]="secureMode" /><label
+        for="switch"
+        >Toggle</label
+      >
+    </div>
+  </div>
 </div>
