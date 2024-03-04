@@ -1,4 +1,12 @@
-<div class="skillsContainer">
+<div class="skillsContainer" *ngIf="getSkillsInfo() !== undefined">
+  <div class="bar wh"></div>
+  <div [ngSwitch]="getLanguage()">
+    <h2 *ngSwitchCase="'DE'">Fähigkeiten</h2>
+    <h2 *ngSwitchCase="'RU'">Навыки</h2>
+    <h2 *ngSwitchCase="'ES'">Habilidades</h2>
+    <h2 *ngSwitchCase="'FR'">Compétences</h2>
+    <h2 *ngSwitchDefault>Skills</h2>
+  </div>
   <div *ngFor="let row of getSkillsInfo()">
     <div class="row">
       <div *ngFor="let skill of row">

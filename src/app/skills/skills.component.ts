@@ -9,12 +9,20 @@ import { PropsService } from '../service/props.service';
 export class SkillsComponent {
   iconBasePath = 'assets/icons/logos/';
 
-  getSkillsInfo(): any[][] {
+  getLanguage(): string {
+    return PropsService.getLanguage();
+  }
+
+  getSkillsInfo(): any[][] | undefined {
     let skills = PropsService.getSkills();
+    if (skills.length == 0) {
+      return undefined;
+    }
     // make a copy of the skills array
     const myClonedArray: any[] = [];
     skills.forEach((val) => myClonedArray.push(Object.assign({}, val)));
-    return this.formatSkillsArray(myClonedArray);
+    const arr = this.formatSkillsArray(myClonedArray);
+    return arr;
   }
 
   formatSkillsArray(skills: any[]): any[][] {

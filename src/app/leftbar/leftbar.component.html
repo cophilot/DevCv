@@ -14,14 +14,7 @@
     </div>
     <app-contact></app-contact>
     <div [style.height]="getSpacingByName('contact') + 'px'"></div>
-    <div class="bar wh"></div>
-    <div [ngSwitch]="getLanguage()">
-      <h2 *ngSwitchCase="'DE'">Fähigkeiten</h2>
-      <h2 *ngSwitchCase="'RU'">Навыки</h2>
-      <h2 *ngSwitchCase="'ES'">Habilidades</h2>
-      <h2 *ngSwitchCase="'FR'">Compétences</h2>
-      <h2 *ngSwitchDefault>Skills</h2>
-    </div>
+
     <app-skills></app-skills>
     <div [style.height]="getSpacingByName('skills') + 'px'"></div>
     <div class="bar wh"></div>
