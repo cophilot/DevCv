@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { getExampleByName } from 'src/utils/examples';
 import { CookieMessageComponent } from '../cookie-message/cookie-message.component';
 import * as CryptoJS from 'crypto-js';
+import { PasswordInputComponent } from '../password-input/password-input.component';
 
 @Injectable({
   providedIn: 'root',
@@ -357,12 +358,12 @@ export class PropsService {
     input.type = 'file';
     input.onchange = (event: any) => {
       const file = event.target.files[0];
+      const ending = file.name.split('.').pop().toLowerCase();
       const reader = new FileReader();
       reader.readAsText(file);
       reader.onload = () => {
-        const binary = reader.result as string;
-        const data = JSON.parse(binary);
-        this.importData(data);
+        const data = reader.result as string;
+        this.importData(data, ending === 'devcvs');
       };
     };
     input.click();
@@ -393,7 +394,15 @@ export class PropsService {
     this.importData(data);
   }
 
-  static importData(data: any) {
+  static async importData(data: any, secure = false) {
+    if (secure) {
+      const code = await PasswordInputComponent.show();
+      if (code == undefined) {
+        return;
+      }
+      data = CryptoJS.AES.decrypt(data, code).toString(CryptoJS.enc.Utf8);
+    }
+    data = JSON.parse(data);
     this.LANGUAGES = [];
 
     this.contact = data.contact;
