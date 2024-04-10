@@ -402,7 +402,12 @@ export class PropsService {
       }
       data = CryptoJS.AES.decrypt(data, code).toString(CryptoJS.enc.Utf8);
     }
-    data = JSON.parse(data);
+    try {
+      const new_data = JSON.parse(data);
+      data = new_data;
+    } catch (e) {
+      // do nothing
+    }
     this.LANGUAGES = [];
 
     this.contact = data.contact;

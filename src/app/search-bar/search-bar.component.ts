@@ -40,7 +40,7 @@ export class SearchBarComponent {
     this.error = false;
 
     if (UserCacheService.isUserCached(this.searchValue, this.secureMode)) {
-      this.naviagteToUserSide();
+      this.navigateToUserSide();
       return;
     }
 
@@ -58,7 +58,7 @@ export class SearchBarComponent {
             response.json().then((data) => {
               data.forEach((repo: any) => {
                 if (repo.name.toLowerCase() === 'mydevcv') {
-                  this.naviagteToUserSide();
+                  this.navigateToUserSide();
                 }
               });
               this.onError();
@@ -82,7 +82,7 @@ export class SearchBarComponent {
     }, 3000);
   }
 
-  naviagteToUserSide() {
+  navigateToUserSide() {
     const user = this.searchValue;
     this.close();
     if (this.secureMode) {
