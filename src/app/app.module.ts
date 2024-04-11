@@ -29,6 +29,7 @@ import { CvGithubViewerComponent } from './cv-github-viewer/cv-github-viewer.com
 import { LoadingPageComponent } from './loading-page/loading-page.component';
 import { UserErrorPageComponent } from './user-error-page/user-error-page.component';
 import { PasswordInputComponent } from './password-input/password-input.component';
+import { ExportOptionComponent } from './export-option/export-option.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { PasswordInputComponent } from './password-input/password-input.componen
     LoadingPageComponent,
     UserErrorPageComponent,
     PasswordInputComponent,
+    ExportOptionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }], // Add HashLocationStrategy as a provider

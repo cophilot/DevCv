@@ -23,6 +23,7 @@ export class PropsService {
   private static education: any;
   private static other: any;
   private static spacing: any;
+  private static settings: any;
 
   private static IMAGE =
     Math.random() > 0.1 ? 'assets/foto_square.jpg' : 'assets/foto_square2.jpg';
@@ -80,6 +81,8 @@ export class PropsService {
     this.addLanguage(this.general);
 
     this.spacing = this.fetchContent('spacing');
+
+    this.settings = this.fetchContent('settings');
   }
 
   static addLanguage(data: any) {
@@ -136,6 +139,9 @@ export class PropsService {
       case 'spacing':
         this.spacing = JSON.parse(content);
         break;
+      case 'settings':
+        this.settings = JSON.parse(content);
+        break;
       default:
         return;
     }
@@ -147,26 +153,41 @@ export class PropsService {
     this.init();
     return this.getJSONPropsByLanguage(this.contact);
   }
+
   static getSkills(): any[] {
     this.init();
     return this.getJSONPropsByLanguage(this.skills);
   }
+
   static getJobs(): any[] {
     this.init();
     return this.getJSONPropsByLanguage(this.jobs);
   }
+
   static getEducation(): any[] {
     this.init();
     return this.getJSONPropsByLanguage(this.education);
   }
+
   static getOther(): any[] {
     this.init();
     return this.getJSONPropsByLanguage(this.other);
   }
+
   static getGeneral(): any {
     this.init();
     return this.getJSONPropsByLanguage(this.general);
   }
+
+  static getSettings(): any {
+    this.init();
+    return this.settings;
+  }
+  static getSettingsAsBoolean(name: string): any {
+    this.init();
+    return Boolean(this.settings[name]);
+  }
+
   static getSpacing(): any {
     this.init();
     return this.spacing;
@@ -242,6 +263,8 @@ export class PropsService {
         return JSON.stringify(this.general);
       case 'spacing':
         return JSON.stringify(this.spacing);
+      case 'settings':
+        return JSON.stringify(this.settings);
       default:
         return '';
     }
@@ -347,6 +370,7 @@ export class PropsService {
       other: this.other,
       general: this.general,
       spacing: this.spacing,
+      settings: this.settings,
       colorScheme: this.SCHEME,
       language: this.LANG,
       image: this.IMAGE,
@@ -410,17 +434,17 @@ export class PropsService {
     }
     this.LANGUAGES = [];
 
-    this.contact = data.contact;
-    this.skills = data.skills;
-
-    this.jobs = data.jobs;
-    this.education = data.education;
-    this.other = data.other;
-    this.general = data.general;
-    this.spacing = data.spacing;
+    this.contact = this.getFieldOrExample(data, 'contact', true);
+    this.skills = this.getFieldOrExample(data, 'skills', true);
+    this.jobs = this.getFieldOrExample(data, 'jobs', true);
+    this.education = this.getFieldOrExample(data, 'education', true);
+    this.other = this.getFieldOrExample(data, 'other', true);
+    this.general = this.getFieldOrExample(data, 'general', true);
+    this.spacing = this.getFieldOrExample(data, 'spacing', true);
+    this.settings = this.getFieldOrExample(data, 'settings', true);
     this.setScheme(data.colorScheme);
-    this.LANG = data.language;
-    this.IMAGE = data.image;
+    this.LANG = this.getFieldOrExample(data, 'language');
+    this.IMAGE = this.getFieldOrExample(data, 'image');
 
     this.addLanguage(this.contact);
     this.addLanguage(this.skills);
@@ -449,6 +473,20 @@ export class PropsService {
     this.setLS('other', JSON.stringify(this.other));
     this.setLS('general', JSON.stringify(this.general));
     this.setLS('spacing', JSON.stringify(this.spacing));
+    this.setLS('settings', JSON.stringify(this.settings));
+  }
+
+  static getFieldOrExample(data: any, key: string, fetchExample = false): any {
+    // check if data has key
+    if (data.hasOwnProperty(key)) {
+      return data[key];
+    }
+
+    if (!fetchExample) {
+      return {};
+    }
+
+    return getExampleByName(key);
   }
 
   static reset() {

@@ -14,11 +14,20 @@ export function getExampleByName(name: string): any {
       return getExampleGeneral();
     case 'spacing':
       return getExampleSpacing();
+    case 'settings':
+      return getExampleSettings();
     default:
       return {};
   }
 }
 
+export function getExampleSettings(): any {
+  return {
+    protected: false,
+    export: true,
+    bars: true,
+  };
+}
 export function getExampleContact(): any {
   return {
     all: [

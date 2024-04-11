@@ -1,0 +1,27 @@
+<div *ngIf="isVisible()">
+  <div class="bg" (click)="hide()"></div>
+  <div class="box">
+    <h1>Export CV</h1>
+    <div class="row">
+      <button class="btn subBtn">Markdown</button>
+    </div>
+    <div class="row">
+      <button class="btn subBtn">TXT</button>
+    </div>
+    <div class="row">
+      <button class="btn subBtn" (click)="exportHTML()">HTML</button>
+    </div>
+    <div class="row">
+      <button class="btn subBtn">JSON</button>
+    </div>
+    <div class="row">
+      <button
+        class="btn subBtn"
+        (click)="hide()"
+        style="background-color: #f44336; color: white"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>

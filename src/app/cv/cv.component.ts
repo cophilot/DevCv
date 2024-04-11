@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ModeService } from '../service/mode.service';
+import { PropsService } from '../service/props.service';
 
 @Component({
   selector: 'app-cv',
@@ -11,5 +12,9 @@ export class CvComponent {
 
   ngOnInit() {
     ModeService.isViewMode = this.viewMode;
+  }
+
+  getSettings() {
+    return PropsService.getSettings();
   }
 }

@@ -22,7 +22,6 @@ export class EditorComponent {
 
   ngOnInit(): void {
     this.text = PropsService.getJsonAsString(this.name);
-    // format json
     this.text = JSON.stringify(JSON.parse(this.text), null, 2);
   }
 

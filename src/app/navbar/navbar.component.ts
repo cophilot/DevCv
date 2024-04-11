@@ -3,6 +3,7 @@ import { PropsService } from '../service/props.service';
 import { ModeService } from '../service/mode.service';
 import { Router } from '@angular/router';
 import { PasswordInputComponent } from '../password-input/password-input.component';
+import { ExportOptionComponent } from '../export-option/export-option.component';
 
 @Component({
   selector: 'app-navbar',
@@ -115,8 +116,17 @@ export class NavbarComponent {
     PropsService.restoreBackup();
     this.router.navigate(['/']);
   }
+
+  getSettings() {
+    return PropsService.getSettings();
+  }
+
   navigateView() {
     this.router.navigate(['/view']);
+  }
+
+  openExportOptions() {
+    ExportOptionComponent.show();
   }
 
   getMode() {

@@ -42,10 +42,13 @@
       >
         {{ name }}
       </button>
-      <p class="navheading" style="margin-top: 50px">Spacing</p>
-
+      <p class="navheading" style="margin-top: 20px">Spacing</p>
       <button class="contentBtn" (click)="editContent = 'Spacing'">
         Spacing
+      </button>
+      <p class="navheading" style="margin-top: 20px">Settings</p>
+      <button class="contentBtn" (click)="editContent = 'Settings'">
+        Settings
       </button>
     </div>
     <div *ngIf="!isClosed && !completeClose">
@@ -179,11 +182,24 @@
 </div>
 
 <div
-  style="position: fixed; right: 50px; top: 50px"
+  style="
+    position: fixed;
+    right: 50px;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+  "
   *ngIf="!completeClose && getMode().isViewMode"
 >
   <button class="btn" (click)="toggleLanguage()">
     {{ getLanguage() }}
+  </button>
+  <button
+    class="btn"
+    (click)="openExportOptions()"
+    *ngIf="getSettings().export"
+  >
+    <i class="bi bi-box-arrow-up" style="font-size: 20px"></i>
   </button>
 </div>
 
