@@ -211,6 +211,7 @@ The skills section is structured as an array of JSON objects. Each JSON object r
 - `name` - The name of the skill.
 - `link` - The link to get more information about the skill.
 - `url` - The URL of the logo to display.
+- `level` - The level of the skill (_1-10_)
 
 You can also leave the `url` empty to use a predefined logo that can be found [here](src/assets/icons/logos). The predefined logos are named after the skill name and will be used if the name of the skill matches the name of the predefined logo (case insensitive and the ending `.png` is not required).
 
@@ -222,12 +223,14 @@ Example:
     {
       "name": "Angular",
       "link": "https://angular.io/",
-      "url": ""
+      "url": "",
+      "level": 8
     },
-        {
+    {
       "name": "Next.js",
       "link": "https://nextjs.org/",
-      "url": "https://creazilla-store.fra1.digitaloceanspaces.com/icons/3219990/nextjs-icon-md.png"
+      "url": "https://creazilla-store.fra1.digitaloceanspaces.com/icons/3219990/nextjs-icon-md.png",
+      "level": 3
     },
     ...
 }

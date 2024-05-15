@@ -11,7 +11,7 @@
   </div>
   <div *ngIf="isClosed && !completeClose && !getMode().isViewMode">
     <div style="right: 30px; top: 20px">
-      <app-my-icon cls="bi bi-gear" (click)="isClosed = false"></app-my-icon>
+      <app-my-icon cls="bi bi-pencil" (click)="isClosed = false"></app-my-icon>
       <app-my-icon cls="bi bi-eye" (click)="navigateView()"></app-my-icon>
       <app-my-icon cls="bi bi-search" (click)="searchBar = true"></app-my-icon>
       <a

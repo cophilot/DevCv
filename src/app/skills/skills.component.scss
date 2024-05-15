@@ -14,14 +14,32 @@
   flex-wrap: wrap;
 }
 .skill {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 25px;
-  margin-right: 20px;
-  width: 60px;
+  a {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    margin-left: 5px;
+    margin-right: 20px;
+    width: 60px;
+    .skill-bar-outline {
+      width: 60px;
+      height: 4px;
+      background-color: transparent;
+      border: 2px solid #ffffff;
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+    .skill-bar-fill {
+      height: 4px;
+      background-color: #ffffff;
+      border: 2px solid #ffffff;
+      border-radius: 5px;
+      margin-top: -8px;
+    }
+  }
 }
 .name {
   font-size: 14px;

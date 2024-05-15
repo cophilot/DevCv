@@ -50,8 +50,7 @@
     overflow-x: hidden;
     overflow-y: auto;
   }
-  button,
-  a {
+  .my-btn {
     width: 200px;
     border: none;
     background-color: white;
@@ -74,8 +73,10 @@
     background-color: red;
   }
   .help {
-    background-color: white;
-    color: black;
+    color: white;
+    font-size: 35px;
+    padding: 10px 20px;
+    margin-top: 20px;
     &:hover {
       scale: 1.1;
     }

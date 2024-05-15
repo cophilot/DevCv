@@ -54,4 +54,9 @@ export class SkillsComponent {
     }
     return skillsArray;
   }
+
+  getSkillWidth(level: number): string {
+    const MAXWIDTH = 60;
+    return (MAXWIDTH / 10) * level + 'px';
+  }
 }

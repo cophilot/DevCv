@@ -12,8 +12,15 @@
       <div *ngFor="let skill of row">
         <div class="skill">
           <a [href]="skill.link" target="_blank">
-            <img [src]="skill.url" class="icon" [alt]="skill.name" />
+            <img [src]="skill.url" class="icon" alt="" />
             <p class="name">{{ skill.name }}</p>
+            <div *ngIf="skill.level !== undefined">
+              <div class="skill-bar-outline"></div>
+              <div
+                class="skill-bar-fill"
+                [style.width]="getSkillWidth(skill.level)"
+              ></div>
+            </div>
           </a>
         </div>
       </div>
