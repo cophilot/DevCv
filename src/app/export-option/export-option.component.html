@@ -3,16 +3,19 @@
   <div class="box">
     <h1>Export CV</h1>
     <div class="row">
-      <button class="btn subBtn">Markdown</button>
+      <button class="btn subBtn" (click)="exportMarkdown()">Markdown</button>
     </div>
     <div class="row">
-      <button class="btn subBtn">TXT</button>
+      <button class="btn subBtn" (click)="exportPDF()">PDF</button>
     </div>
     <div class="row">
       <button class="btn subBtn" (click)="exportHTML()">HTML</button>
     </div>
     <div class="row">
-      <button class="btn subBtn">JSON</button>
+      <button class="btn subBtn" (click)="exportJSON()">JSON</button>
+    </div>
+    <div class="row">
+      <button class="btn subBtn" (click)="exportYAML()">YAML</button>
     </div>
     <div class="row">
       <button
