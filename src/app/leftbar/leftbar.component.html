@@ -1,7 +1,7 @@
 <div class="background" [class]="getMode().isViewMode ? '' : 'leftHeight'">
   <img [src]="getImage()" alt="picture" class="foto" *ngIf="getImage() != ''" />
   <div class="container">
-    <div class="bar wh" *ngIf="getImage() != ''"></div>
+    <app-bar className="wh" *ngIf="getImage() != ''"></app-bar>
     <div
       [ngSwitch]="getLanguage()"
       [style.padding-top.px]="getImage() != '' ? 0 : 50"
@@ -17,7 +17,7 @@
 
     <app-skills></app-skills>
     <div [style.height]="getSpacingByName('skills') + 'px'"></div>
-    <div class="bar wh"></div>
+    <app-bar className="wh"></app-bar>
     <div style="padding-bottom: 100px">
       <div [ngSwitch]="getLanguage()">
         <h2 *ngSwitchCase="'DE'">Sprachen</h2>

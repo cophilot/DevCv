@@ -43,15 +43,6 @@ a {
 h2 {
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 0);
 }
-.bar {
-  width: 60px;
-  height: 4px;
-  border-radius: 2px;
-  margin-bottom: 30px;
-  margin-top: 30px;
-  margin-left: 5px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0);
-}
 
 .wh {
   background-color: white;
@@ -134,7 +125,7 @@ h2 {
 [data-theme="purple"] {
   --primary: #9966cc;
 }
-[data-theme="yellow"] {
-  --primary: #22f4ae;
+[data-theme="black"] {
+  --primary: #000;
   /* --primary: #808000; */
 }

@@ -3,6 +3,12 @@
     <div class="job">
       <div class="jobHeader">
         <p class="jobTitle">{{ job.job.toUpperCase() }}</p>
+        <img
+          class="jobLogo"
+          [src]="job.logo"
+          alt=""
+          *ngIf="job.logo !== undefined && job.logo !== ''"
+        />
         <p class="jobDate">
           <i>{{ job.date }}</i>
         </p>

@@ -46,7 +46,7 @@
     </p>
   </div>
 
-  <div class="bar gr noShadow"></div>
+  <app-bar className="gr noShadow"></app-bar>
   <div [ngSwitch]="getLanguage()">
     <h2 *ngSwitchCase="'DE'">Berufserfahrung</h2>
     <h2 *ngSwitchCase="'RU'">Опыт работы</h2>
@@ -57,7 +57,7 @@
   <app-jobs></app-jobs>
   <div [style.height]="getSpacingByName('work') + 'px'"></div>
 
-  <div class="bar gr noShadow"></div>
+  <app-bar className="gr noShadow"></app-bar>
   <div [ngSwitch]="getLanguage()">
     <h2 *ngSwitchCase="'DE'">Bildungsweg</h2>
     <h2 *ngSwitchCase="'RU'">Образование</h2>

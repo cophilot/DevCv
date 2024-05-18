@@ -1,6 +1,6 @@
 <div class="other">
   <div class="part" *ngFor="let part of getOtherInfo()">
-    <div class="bar gr noShadow"></div>
+    <app-bar className="gr noShadow"></app-bar>
     <h2>{{ part.title }}</h2>
     <div *ngIf="part.description != ''" class="desc">
       <p>{{ part.description }}</p>

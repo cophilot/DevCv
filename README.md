@@ -23,7 +23,7 @@
 ---
 
 - [Privacy](#privacy)
-- [Settings](#settings)
+- [Editing](#editing)
 - [Add your own data](#add-your-own-data)
 - [Languages](#languages)
   - [Multiple languages](#multiple-languages)
@@ -36,6 +36,7 @@
   - [Education](#education)
   - [Other](#other)
 - [Spacing](#spacing)
+- [Settings](#settings)
 - [Print](#print)
 - [Local installation](#local-installation)
 
@@ -47,9 +48,9 @@ This project does not collect any personal data. The data you enter is only stor
 
 ---
 
-## Settings
+## Editing
 
-You can open the settings by clicking on the settings icon in the top right corner. Here you can edit the data for your CV.
+You can edit the CV by clicking on the pencil icon in the top right corner.
 
 ---
 
@@ -345,6 +346,24 @@ Example: To add a 70px gap after the Skills section so that the languages sectio
   "work": 0,
   "education": 0,
   "certification": 130
+}
+```
+
+---
+
+## Settings
+
+You can apply some general settings to the CV in the settings section. The settings are structured as a JSON object:
+
+- `protected` - If enabled a protection layer will be added on top of the CV to prevent copying the content.
+- `export` - If users are allowed to export the CV in different formats.
+- `bars` - If the accent bars should be displayed.
+
+```json
+{
+  "protected": false,
+  "export": true,
+  "bars": true
 }
 ```
 
