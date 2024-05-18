@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { PropsService } from '../service/props.service';
 import * as yaml from 'js-yaml';
 import MarkdownIt from 'markdown-it';
-import puppeteer from 'puppeteer';
+import jsPDF from 'jspdf';
+
 @Component({
   selector: 'app-export-option',
   templateUrl: './export-option.component.html',
@@ -184,11 +185,25 @@ export class ExportOptionComponent {
     a.click();
   }
 
-  exportPDF() {
+  async exportPDF() {
     const markdown = this.getMarkdown();
     const md = new MarkdownIt();
     const html = md.render(markdown);
-    const blob = new Blob([html], { type: 'text/html' });
+    // convert to pdf and download
+    const pdf = new jsPDF();
+
+    pdf.setFontSize(12);
+    pdf.html(html, {
+      callback: (doc) => {
+        doc.save(this.getFileName('.pdf'));
+      },
+      x: 10,
+      y: 10,
+      width: 170, //target width in the PDF document
+      windowWidth: 650, //window width in CSS pixels
+    });
+
+    const blob = new Blob([pdf.output('blob')], { type: 'application/pdf' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
