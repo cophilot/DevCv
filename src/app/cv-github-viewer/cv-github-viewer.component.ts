@@ -111,7 +111,7 @@ export class CvGithubViewerComponent {
     } else {
       PropsService.importUserData(data);
     }
-
+    PropsService.setInitialised();
     LoadingPageComponent.hide();
     UserErrorPageComponent.hide();
   }

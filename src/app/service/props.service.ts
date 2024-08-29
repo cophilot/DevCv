@@ -309,7 +309,6 @@ export class PropsService {
   static acceptCookies() {
     this.cookiesAllowed = true;
     this.setLS('cookiesAllowed', 'true');
-    this.initial = false;
     this.init();
   }
 
@@ -507,6 +506,10 @@ export class PropsService {
 
   static createBackup() {
     this.backupData = this.getAllData();
+  }
+
+  static setInitialised() {
+    this.initial = true;
   }
 
   static restoreBackup() {
