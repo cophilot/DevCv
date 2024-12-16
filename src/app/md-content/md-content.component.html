@@ -1,0 +1,16 @@
+<span *ngFor="let e of getElements()">
+  <span *ngIf="e.type === text()">{{ e.content }}</span>
+  <b *ngIf="e.type === bold()"
+    ><app-md-content [content]="e.content"></app-md-content
+  ></b>
+  <i *ngIf="e.type === italic()"
+    ><app-md-content [content]="e.content"></app-md-content
+  ></i>
+  <a *ngIf="e.type === link()" [href]="e.url" target="_blank">
+    <app-md-content [content]="e.content"></app-md-content>
+  </a>
+  <span *ngIf="e.type === styleBox()" [style]="e.style"
+    ><app-md-content [content]="e.content"></app-md-content
+  ></span>
+  <span>{{ " " }}</span>
+</span>

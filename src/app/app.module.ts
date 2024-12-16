@@ -31,6 +31,7 @@ import { UserErrorPageComponent } from './user-error-page/user-error-page.compon
 import { PasswordInputComponent } from './password-input/password-input.component';
 import { ExportOptionComponent } from './export-option/export-option.component';
 import { BarComponent } from './bar/bar.component';
+import { MdContentComponent } from './md-content/md-content.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { BarComponent } from './bar/bar.component';
     PasswordInputComponent,
     ExportOptionComponent,
     BarComponent,
+    MdContentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }], // Add HashLocationStrategy as a provider

@@ -337,6 +337,17 @@ export function getExampleOther(): any {
         list: ['Azure Fundamentals', 'AWS Cloud Practitioner'],
       },
       {
+        id: 'md-support',
+        title: 'Markdown _Support_',
+        description: '',
+        list: [
+          'A text can be made *bold*',
+          'A text can be _italic_',
+          'Add a [link](https://example.com)',
+          'Add CSS to [text]{background:black;color:white;padding-left:10px;padding-right:10px}',
+        ],
+      },
+      {
         id: 'hobbies',
         title: 'Hobbies',
         description: '',
@@ -488,6 +499,6 @@ export function getExampleSpacing(): any {
     languages: 0,
     work: 0,
     education: 0,
-    certification: 130,
+    certification: 0,
   };
 }

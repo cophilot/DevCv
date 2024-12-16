@@ -1,13 +1,19 @@
 <div class="other">
   <div class="part" *ngFor="let part of getOtherInfo()">
     <app-bar className="gr noShadow"></app-bar>
-    <h2>{{ part.title }}</h2>
+    <h2>
+      <app-md-content [content]="part.title"></app-md-content>
+    </h2>
     <div *ngIf="part.description != ''" class="desc">
-      <p>{{ part.description }}</p>
+      <p>
+        <app-md-content [content]="part.description"></app-md-content>
+      </p>
     </div>
     <div *ngIf="part.list.length != 0" class="descList">
       <ul>
-        <li *ngFor="let item of part.list">{{ item }}</li>
+        <li *ngFor="let item of part.list">
+          <app-md-content [content]="item"></app-md-content>
+        </li>
       </ul>
     </div>
     <div [style.height]="getSpacingByName(part.id) + 'px'"></div>
