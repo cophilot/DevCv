@@ -8,7 +8,7 @@
       [(ngModel)]="searchValue"
       id="search-input"
     />
-    <i class="bi bi-search search" (click)="search()" *ngIf="!loading"></i>
+    <i class="bi bi-search search" (click)="onSearch()" *ngIf="!loading"></i>
     <i class="bi bi-arrow-clockwise rotate" *ngIf="loading"></i>
   </div>
   <div class="row">
@@ -18,6 +18,11 @@
         for="switch"
         >Toggle</label
       >
+    </div>
+  </div>
+  <div class="row user-box">
+    <div class="user" *ngFor="let user of suggestUsers" (click)="search(user)">
+      {{ user }}
     </div>
   </div>
 </div>
