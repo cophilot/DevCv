@@ -40,23 +40,6 @@ export class NavbarComponent {
     PropsService.setScheme(colorScheme);
   }
 
-  uploadImagetest() {
-    document.getElementById('upload')?.click();
-    document.getElementById('upload')?.addEventListener('change', (event) => {
-      const file = (<HTMLInputElement>event.target)?.files?.[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-          const result = reader.result?.toString();
-          if (result) {
-            this.editContent = result;
-          }
-        };
-      }
-    });
-  }
-
   uploadImage() {
     const input = document.createElement('input');
     input.type = 'file';

@@ -22,6 +22,7 @@ export class PropsService {
   private static jobs: any;
   private static education: any;
   private static other: any;
+  private static otherleft: any;
   private static spacing: any;
   private static settings: any;
 
@@ -76,6 +77,9 @@ export class PropsService {
 
     this.other = this.fetchContent('other');
     this.addLanguage(this.other);
+
+    this.otherleft = this.fetchContent('otherleft');
+    this.addLanguage(this.otherleft);
 
     this.general = this.fetchContent('general');
     this.addLanguage(this.general);
@@ -132,6 +136,10 @@ export class PropsService {
         this.other = JSON.parse(content);
         this.addLanguage(this.other);
         break;
+      case 'otherleft':
+        this.otherleft = JSON.parse(content);
+        this.addLanguage(this.otherleft);
+        break;
       case 'general':
         this.general = JSON.parse(content);
         this.addLanguage(this.general);
@@ -172,6 +180,11 @@ export class PropsService {
   static getOther(): any[] {
     this.init();
     return this.getJSONPropsByLanguage(this.other);
+  }
+
+  static getOtherLeft(): any[] {
+    this.init();
+    return this.getJSONPropsByLanguage(this.otherleft);
   }
 
   static getGeneral(): any {
@@ -259,6 +272,8 @@ export class PropsService {
         return JSON.stringify(this.education);
       case 'other':
         return JSON.stringify(this.other);
+      case 'otherleft':
+        return JSON.stringify(this.otherleft);
       case 'general':
         return JSON.stringify(this.general);
       case 'spacing':
@@ -367,6 +382,7 @@ export class PropsService {
       jobs: this.jobs,
       education: this.education,
       other: this.other,
+      otherleft: this.otherleft,
       general: this.general,
       spacing: this.spacing,
       settings: this.settings,
@@ -438,6 +454,7 @@ export class PropsService {
     this.jobs = this.getFieldOrExample(data, 'jobs', true);
     this.education = this.getFieldOrExample(data, 'education', true);
     this.other = this.getFieldOrExample(data, 'other', true);
+    this.otherleft = this.getFieldOrExample(data, 'otherleft', true);
     this.general = this.getFieldOrExample(data, 'general', true);
     this.spacing = this.getFieldOrExample(data, 'spacing', true);
     this.settings = this.getFieldOrExample(data, 'settings', true);
@@ -450,6 +467,7 @@ export class PropsService {
     this.addLanguage(this.jobs);
     this.addLanguage(this.education);
     this.addLanguage(this.other);
+    this.addLanguage(this.otherleft);
     this.addLanguage(this.general);
     if (this.LANGUAGES.includes(this.LANG) == false) {
       this.LANGUAGES.push(this.LANG);
@@ -470,6 +488,7 @@ export class PropsService {
     this.setLS('jobs', JSON.stringify(this.jobs));
     this.setLS('education', JSON.stringify(this.education));
     this.setLS('other', JSON.stringify(this.other));
+    this.setLS('otherleft', JSON.stringify(this.otherleft));
     this.setLS('general', JSON.stringify(this.general));
     this.setLS('spacing', JSON.stringify(this.spacing));
     this.setLS('settings', JSON.stringify(this.settings));

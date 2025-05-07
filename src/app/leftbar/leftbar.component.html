@@ -18,7 +18,7 @@
     <app-skills></app-skills>
     <div [style.height]="getSpacingByName('skills') + 'px'"></div>
     <app-bar className="wh"></app-bar>
-    <div style="padding-bottom: 100px">
+    <div>
       <div [ngSwitch]="getLanguage()">
         <h2 *ngSwitchCase="'DE'">Sprachen</h2>
         <h2 *ngSwitchCase="'RU'">Языки</h2>
@@ -35,5 +35,9 @@
       </p>
     </div>
     <div [style.height]="getSpacingByName('languages') + 'px'"></div>
+    <app-other
+      [content]="getProps().getOtherLeft()"
+      [lightMode]="true"
+    ></app-other>
   </div>
 </div>

@@ -67,5 +67,8 @@
   </div>
   <app-education></app-education>
   <div [style.height]="getSpacingByName('education') + 'px'"></div>
-  <app-other style="margin-bottom: 100px"></app-other>
+  <app-other
+    [content]="getProps().getOther()"
+    style="margin-bottom: 100px"
+  ></app-other>
 </div>

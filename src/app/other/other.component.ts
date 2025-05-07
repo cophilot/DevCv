@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PropsService } from '../service/props.service';
 import { MarkdownCompiler, MarkdownElement } from 'src/utils/MarkdownCompiler';
 
@@ -8,8 +8,12 @@ import { MarkdownCompiler, MarkdownElement } from 'src/utils/MarkdownCompiler';
   styleUrls: ['./other.component.scss'],
 })
 export class OtherComponent {
+  @Input() content: any[] = [];
+  @Input() lightMode: boolean = false;
+
   getOtherInfo(): any[] {
-    return PropsService.getOther();
+    return this.content;
+    //return PropsService.getOther();
   }
 
   getSpacingByName(name: string): number {

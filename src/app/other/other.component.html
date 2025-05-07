@@ -1,6 +1,6 @@
 <div class="other">
   <div class="part" *ngFor="let part of getOtherInfo()">
-    <app-bar className="gr noShadow"></app-bar>
+    <app-bar [className]="'noShadow ' + (lightMode ? 'wh' : 'gr')"></app-bar>
     <h2>
       <app-md-content [content]="part.title"></app-md-content>
     </h2>

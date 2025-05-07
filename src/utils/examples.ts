@@ -10,6 +10,8 @@ export function getExampleByName(name: string): any {
       return getExampleEducation();
     case 'other':
       return getExampleOther();
+    case 'otherleft':
+      return [];
     case 'general':
       return getExampleGeneral();
     case 'spacing':

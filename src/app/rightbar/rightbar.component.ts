@@ -22,6 +22,10 @@ export class RightbarComponent {
     return PropsService.getGeneral();
   }
 
+  getProps() {
+    return PropsService;
+  }
+
   getSpacingByName(name: string): number {
     return PropsService.getSpacingByName(name);
   }

@@ -33,4 +33,8 @@ export class LeftbarComponent {
   getMode() {
     return ModeService;
   }
+
+  getProps() {
+    return PropsService;
+  }
 }
