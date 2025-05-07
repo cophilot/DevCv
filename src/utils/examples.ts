@@ -28,6 +28,7 @@ export function getExampleSettings(): any {
     protected: false,
     export: true,
     bars: true,
+    showPageNumber: false,
   };
 }
 export function getExampleContact(): any {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ModeService } from '../service/mode.service';
+import { PropsService } from '../service/props.service';
 
 @Component({
   selector: 'app-page1',
@@ -9,5 +10,8 @@ import { ModeService } from '../service/mode.service';
 export class Page1Component {
   getMode() {
     return ModeService;
+  }
+  getProps() {
+    return PropsService;
   }
 }

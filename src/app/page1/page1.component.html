@@ -6,7 +6,13 @@
     <app-leftbar></app-leftbar>
     <app-rightbar></app-rightbar>
 
-    <app-page-number [pageNumber]="1"></app-page-number>
-    <app-page-number [pageNumber]="2"></app-page-number>
+    <app-page-number
+      [pageNumber]="1"
+      *ngIf="getProps().getSettings().showPageNumber"
+    ></app-page-number>
+    <app-page-number
+      [pageNumber]="2"
+      *ngIf="getProps().getSettings().showPageNumber"
+    ></app-page-number>
   </div>
 </div>
