@@ -37,9 +37,9 @@
 
         <div class="icon" *ngFor="let u of job.use">
           <a [href]="u.link" target="_blank" *ngIf="u.link">
-            <img [src]="parseIconPath(u.icon)" />
+            <img [src]="parseIconPath(u.icon || u.name)" />
           </a>
-          <img [src]="parseIconPath(u.icon)" *ngIf="!u.link" />
+          <img [src]="parseIconPath(u.icon || u.name)" *ngIf="!u.link" />
         </div>
       </div>
     </div>
