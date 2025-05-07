@@ -26,6 +26,22 @@
           <li *ngFor="let d of job.description">{{ d }}</li>
         </ul>
       </div>
+      <div class="used-lang" *ngIf="job.use">
+        <!-- <p [ngSwitch]="getLanguage()">
+          <span *ngSwitchCase="'EN'">Used:</span>
+          <span *ngSwitchCase="'DE'">Benutzt:</span>
+          <span *ngSwitchCase="'RU'">Используемые:</span>
+          <span *ngSwitchCase="'FR'">Utilisé:</span>
+          <span *ngSwitchCase="'ES'">Usado:</span>
+        </p> -->
+
+        <div class="icon" *ngFor="let u of job.use">
+          <a [href]="u.link" target="_blank" *ngIf="u.link">
+            <img [src]="parseIconPath(u.icon)" />
+          </a>
+          <img [src]="parseIconPath(u.icon)" *ngIf="!u.link" />
+        </div>
+      </div>
     </div>
   </div>
 </div>

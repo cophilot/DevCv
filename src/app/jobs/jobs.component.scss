@@ -56,3 +56,16 @@
     margin-left: -20px;
   }
 }
+
+.used-lang {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  align-items: center;
+  opacity: 0.7;
+  img {
+    width: 20px;
+    margin-left: 10px;
+    filter: brightness(0) invert(0);
+  }
+}

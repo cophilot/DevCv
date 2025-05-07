@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PropsService } from '../service/props.service';
+import IconUtils from 'src/utils/IconUtils';
 
 @Component({
   selector: 'app-skills',
@@ -7,8 +8,6 @@ import { PropsService } from '../service/props.service';
   styleUrls: ['./skills.component.scss'],
 })
 export class SkillsComponent {
-  iconBasePath = 'assets/icons/logos/';
-
   getLanguage(): string {
     return PropsService.getLanguage();
   }
@@ -35,15 +34,9 @@ export class SkillsComponent {
     const skillsArray: any[][] = [];
     let row: any[] = [];
     skills.forEach((skill, index) => {
-      if (skill.url == '') {
-        skill.url =
-          this.iconBasePath +
-          (skill.name.toLowerCase() == 'c#'
-            ? 'csharp'
-            : skill.name.toLowerCase()) +
-          '.png';
-      }
+      skill.url = IconUtils.parseIconPath(skill.url, skill.name);
       row.push(skill);
+
       if ((index + 1) % 3 === 0) {
         skillsArray.push(row);
         row = [];

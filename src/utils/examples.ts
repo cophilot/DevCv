@@ -158,6 +158,16 @@ export function getExampleJobs(): any {
         url: 'https://www.example.com/',
         location: 'San Francisco',
         date: 'January 2023 - present',
+        use: [
+          {
+            icon: 'python',
+            link: 'https://www.python.org/',
+          },
+          {
+            icon: 'ts',
+            link: 'https://www.typescriptlang.org/',
+          },
+        ],
         description: [
           'Doing stuff',
           'Doing more stuff',
@@ -192,6 +202,16 @@ export function getExampleJobs(): any {
         url: 'https://www.example.com/',
         location: 'San Francisco',
         date: 'Januar 2023 - heute',
+        use: [
+          {
+            icon: 'python',
+            link: 'https://www.python.org/',
+          },
+          {
+            icon: 'ts',
+            link: 'https://www.typescriptlang.org/',
+          },
+        ],
         description: [
           'Dinge tun',
           'Mehr Sachen machen',
@@ -229,6 +249,16 @@ export function getExampleJobs(): any {
         url: 'https://www.example.com/',
         location: 'Сан-Франциско',
         date: 'Январь 2023 г. - настоящее время',
+        use: [
+          {
+            icon: 'python',
+            link: 'https://www.python.org/',
+          },
+          {
+            icon: 'ts',
+            link: 'https://www.typescriptlang.org/',
+          },
+        ],
         description: [
           'Делать что-то',
           'Делаем больше вещей',
@@ -263,6 +293,16 @@ export function getExampleJobs(): any {
         url: 'https://www.example.com/',
         location: 'San Francisco',
         date: 'Enero de 2023 - presente',
+        use: [
+          {
+            icon: 'python',
+            link: 'https://www.python.org/',
+          },
+          {
+            icon: 'ts',
+            link: 'https://www.typescriptlang.org/',
+          },
+        ],
         description: [
           'Haciendo cosas',
           'Haciendo más cosas',
@@ -297,6 +337,16 @@ export function getExampleJobs(): any {
         url: 'https://www.example.com/',
         location: 'San Francisco',
         date: "Janvier 2023 - aujourd'hui",
+        use: [
+          {
+            icon: 'python',
+            link: 'https://www.python.org/',
+          },
+          {
+            icon: 'ts',
+            link: 'https://www.typescriptlang.org/',
+          },
+        ],
         description: [
           'Faire des trucs',
           'Faire plus de choses',
