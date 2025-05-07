@@ -10,39 +10,39 @@
     *ngIf="getGeneralInfo().dob && getGeneralInfo().pob"
   >
     <p *ngSwitchCase="'DE'">
-      <b>
-        Geburtsdatum: {{ getGeneralInfo().dob }}
+      <span>
+        Geburtsdatum: <b>{{ getGeneralInfo().dob }}</b>
         <br />
-        Geburtsort: {{ getGeneralInfo().pob }}
-      </b>
+        Geburtsort: <b>{{ getGeneralInfo().pob }}</b>
+      </span>
     </p>
     <p *ngSwitchCase="'RU'">
-      <b>
-        Дата рождения: {{ getGeneralInfo().dob }}
+      <span>
+        Дата рождения: <b>{{ getGeneralInfo().dob }}</b>
         <br />
-        Место рождения: {{ getGeneralInfo().pob }}
-      </b>
+        Место рождения: <b>{{ getGeneralInfo().pob }}</b>
+      </span>
     </p>
     <p *ngSwitchCase="'FR'">
-      <b>
-        Date de naissance: {{ getGeneralInfo().dob }}
+      <span>
+        Date de naissance: <b>{{ getGeneralInfo().dob }}</b>
         <br />
-        Lieu de naissance: {{ getGeneralInfo().pob }}
-      </b>
+        Lieu de naissance: <b>{{ getGeneralInfo().pob }}</b>
+      </span>
     </p>
     <p *ngSwitchCase="'ES'">
-      <b>
-        Fecha de nacimiento: {{ getGeneralInfo().dob }}
+      <span>
+        Fecha de nacimiento: <b>{{ getGeneralInfo().dob }}</b>
         <br />
-        Lugar de nacimiento: {{ getGeneralInfo().pob }}
-      </b>
+        Lugar de nacimiento: <b>{{ getGeneralInfo().pob }}</b>
+      </span>
     </p>
     <p *ngSwitchDefault>
-      <b>
-        Date of birth: {{ getGeneralInfo().dob }}
+      <span>
+        Date of birth: <b>{{ getGeneralInfo().dob }}</b>
         <br />
-        Place of birth: {{ getGeneralInfo().pob }}
-      </b>
+        Place of birth: <b>{{ getGeneralInfo().pob }}</b>
+      </span>
     </p>
   </div>
 
