@@ -21,4 +21,8 @@ export class JobsComponent {
     console.log(te);
     return te;
   }
+
+  getSpacingByName(id: string): number {
+    return PropsService.getSpacingByName(id);
+  }
 }

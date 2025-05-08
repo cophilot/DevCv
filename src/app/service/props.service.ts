@@ -206,6 +206,10 @@ export class PropsService {
     return this.spacing;
   }
   static getSpacingByName(name: string): number {
+    if (name == undefined) {
+      return 0;
+    }
+
     this.init();
     if (this.spacing == undefined) {
       return 0;
