@@ -12,6 +12,7 @@ import {
 })
 export class MdContentComponent {
   @Input() content: string = '';
+  @Input() lightMode: boolean = false;
 
   getElements(): MarkdownElement[] {
     return MarkdownCompiler.compile(this.content);

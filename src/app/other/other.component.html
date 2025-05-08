@@ -2,17 +2,26 @@
   <div class="part" *ngFor="let part of getOtherInfo()">
     <app-bar [className]="'noShadow ' + (lightMode ? 'wh' : 'gr')"></app-bar>
     <h2>
-      <app-md-content [content]="part.title"></app-md-content>
+      <app-md-content
+        [lightMode]="lightMode"
+        [content]="part.title"
+      ></app-md-content>
     </h2>
     <div *ngIf="part.description != ''" class="desc">
       <p>
-        <app-md-content [content]="part.description"></app-md-content>
+        <app-md-content
+          [lightMode]="lightMode"
+          [content]="part.description"
+        ></app-md-content>
       </p>
     </div>
     <div *ngIf="part.list.length != 0" class="descList">
       <ul>
         <li *ngFor="let item of part.list">
-          <app-md-content [content]="item"></app-md-content>
+          <app-md-content
+            [lightMode]="lightMode"
+            [content]="item"
+          ></app-md-content>
         </li>
       </ul>
     </div>

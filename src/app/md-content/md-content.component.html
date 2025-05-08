@@ -1,12 +1,17 @@
-<span *ngFor="let e of getElements()">
-  <span *ngIf="e.type === text()">{{ e.content }}</span>
+<span *ngFor="let e of getElements()" style="opacity: 1">
+  <span *ngIf="e.type === text()" style="opacity: 1">{{ e.content }}</span>
   <b *ngIf="e.type === bold()"
     ><app-md-content [content]="e.content"></app-md-content
   ></b>
   <i *ngIf="e.type === italic()"
     ><app-md-content [content]="e.content"></app-md-content
   ></i>
-  <a *ngIf="e.type === link()" [href]="e.url" target="_blank">
+  <a
+    *ngIf="e.type === link()"
+    [href]="e.url"
+    target="_blank"
+    [style.color]="lightMode ? 'white' : 'black'"
+  >
     <app-md-content [content]="e.content"></app-md-content>
   </a>
   <span *ngIf="e.type === styleBox()" [style]="e.style"
