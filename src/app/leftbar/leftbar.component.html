@@ -1,4 +1,8 @@
-<div class="background" [class]="getMode().isViewMode ? '' : 'leftHeight'">
+<div
+  class="background"
+  [class]="getMode().isViewMode ? '' : 'leftHeight'"
+  style="margin-bottom: 100px"
+>
   <img [src]="getImage()" alt="picture" class="foto" *ngIf="getImage() != ''" />
   <div class="container">
     <app-bar className="wh" *ngIf="getImage() != ''"></app-bar>
