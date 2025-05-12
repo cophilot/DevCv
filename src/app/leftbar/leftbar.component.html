@@ -39,9 +39,11 @@
       </p>
     </div>
     <div [style.height]="getSpacingByName('languages') + 'px'"></div>
-    <app-other
-      [content]="getProps().getOtherLeft()"
-      [lightMode]="true"
-    ></app-other>
+    <div style="margin-right: 30px">
+      <app-other
+        [content]="getProps().getOtherLeft()"
+        [lightMode]="true"
+      ></app-other>
+    </div>
   </div>
 </div>
