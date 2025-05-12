@@ -17,11 +17,27 @@
     </div>
     <div *ngIf="part.list.length != 0" class="descList">
       <ul>
-        <li *ngFor="let item of part.list">
+        <li
+          *ngFor="let item of part.list"
+          [style.opacity]="lightMode ? 1 : 0.7"
+        >
           <app-md-content
             [lightMode]="lightMode"
             [content]="item"
+            *ngIf="!isArray(item)"
           ></app-md-content>
+          <ul *ngIf="isArray(item)">
+            <li
+              *ngFor="let subItem of item"
+              class="sublist-item"
+              [style.opacity]="lightMode ? 1 : 0.7"
+            >
+              <app-md-content
+                [lightMode]="lightMode"
+                [content]="subItem"
+              ></app-md-content>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

@@ -17,9 +17,7 @@ export class JobsComponent {
   }
 
   parseIconPath(path: string) {
-    const te = IconUtils.parseIconPath(path);
-    console.log(te);
-    return te;
+    return IconUtils.parseIconPath(path);
   }
 
   getSpacingByName(id: string): number {

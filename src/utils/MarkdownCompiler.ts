@@ -1,36 +1,43 @@
 export class MarkdownCompiler {
   static compile(markdown: string): MarkdownElement[] {
-    const words = markdown.split(' ');
     const elements: MarkdownElement[] = [];
-    for (const word of words) {
-      const parsedWord = word.slice(1, -1);
-      if (
-        word.startsWith('[') &&
-        word.endsWith(')') &&
-        word.includes(']') &&
-        word.includes('(')
-      ) {
-        const url = word.slice(word.indexOf('(') + 1, -1);
-        const content = word.slice(1, word.indexOf(']'));
-        elements.push({ type: MarkdownElementType.Link, content, url });
-      } else if (
-        word.startsWith('[') &&
-        word.endsWith('}') &&
-        word.includes(']') &&
-        word.includes('{')
-      ) {
-        const style = word.slice(word.indexOf('{') + 1, -1);
-        const content = word.slice(1, word.indexOf(']'));
-        elements.push({ type: MarkdownElementType.StyleBox, content, style });
-      } else if (word.startsWith('*') && word.endsWith('*')) {
-        elements.push({ type: MarkdownElementType.Bold, content: parsedWord });
-      } else if (word.startsWith('_') && word.endsWith('_')) {
+    const regex =
+      /\[([^\]]+)\]\(([^)]+)\)|\[([^\]]+)\]\{([^}]+)\}|\*([^*]+)\*|_([^_]+)_|(\S+)/g;
+
+    let match;
+    while ((match = regex.exec(markdown)) !== null) {
+      if (match[1] && match[2]) {
+        // Link: [text](url)
+        elements.push({
+          type: MarkdownElementType.Link,
+          content: match[1],
+          url: match[2],
+        });
+      } else if (match[3] && match[4]) {
+        // StyleBox: [text]{style}
+        elements.push({
+          type: MarkdownElementType.StyleBox,
+          content: match[3],
+          style: match[4],
+        });
+      } else if (match[5]) {
+        // Bold: *text*
+        elements.push({
+          type: MarkdownElementType.Bold,
+          content: match[5],
+        });
+      } else if (match[6]) {
+        // Italic: _text_
         elements.push({
           type: MarkdownElementType.Italic,
-          content: parsedWord,
+          content: match[6],
         });
-      } else {
-        elements.push({ type: MarkdownElementType.Text, content: word });
+      } else if (match[7]) {
+        // Plain text
+        elements.push({
+          type: MarkdownElementType.Text,
+          content: match[7],
+        });
       }
     }
     return elements;

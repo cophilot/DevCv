@@ -7,7 +7,6 @@ h2 {
   li {
     margin-top: 3px;
     font-size: 14px;
-    opacity: 0.7;
   }
   ul {
     list-style-type: none;
@@ -16,6 +15,9 @@ h2 {
     content: "-";
     position: absolute;
     margin-left: -20px;
+  }
+  .sublist-item {
+    margin-left: 20px;
   }
 }
 .desc {

@@ -19,4 +19,8 @@ export class OtherComponent {
   getSpacingByName(name: string): number {
     return PropsService.getSpacingByName(name);
   }
+
+  isArray(arr: unknown): boolean {
+    return Array.isArray(arr);
+  }
 }
