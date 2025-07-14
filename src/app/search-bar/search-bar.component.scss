@@ -136,6 +136,9 @@
   overflow-x: scroll;
   padding-top: 10px;
   padding-bottom: 10px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @keyframes rotate {
